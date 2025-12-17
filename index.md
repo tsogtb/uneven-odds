@@ -108,7 +108,7 @@ Explain the interactions with the LIWC features, their importance in the link se
 them. Make an ML model to predict which LIWC will mostly lead to a negative sentiment.
 
 <u>What is LIWC?</u>
-Small <a href="/LIWC/" target="_blank" rel="noopener">part</a> on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind
+Small <a href="/liwc/" target="_blank" rel="noopener">part</a> on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind
 it, and their importance in our analysis. à speech bubble where our reddit character is questioning himself?
 
 <u>Hostile vs non-hostile language</u>
