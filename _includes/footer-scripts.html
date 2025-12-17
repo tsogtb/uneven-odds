@@ -36,3 +36,20 @@
     <script src="{{ js | relative_url }}"></script>
   {% endfor %}
 {% endif %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const arrow = document.querySelector(".scroll-down-arrow");
+  const header = document.querySelector(".intro-header");
+
+  arrow.addEventListener("click", function () {
+    const headerBottom =
+      header.getBoundingClientRect().bottom + window.scrollY;
+
+    window.scrollTo({
+      top: headerBottom,
+      behavior: "smooth"
+    });
+  });
+});
+</script>

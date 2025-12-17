@@ -6,7 +6,7 @@ layout: base
 
 <main class="{% if page.full-width %} container-fluid {% else %} container-md {% endif %}">
   <div class="row">
-    <div class="{% if page.full-width %} col {% else %} col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 {% endif %}">
+    <div class="col-xl-12 col-lg-12">
       {% if page.before-content %}
         <div class="before-content">
           {% for file in page.before-content %}
@@ -15,7 +15,38 @@ layout: base
         </div>
       {% endif %}
 
-      {{ content }}
+      {% if page.toc %}
+        {% assign parts = content | split: '<!--toc-->' %}
+      
+        <div class="row">    
+          <!-- TOC -->
+          <aside class="col-lg-2 d-none d-lg-block toc">
+            <nav class="toc-inner">
+              <h2 class="toc-title-small">Content</h2>
+              {{ parts[0] }}
+            </nav>
+          </aside>         
+          <!-- Main content -->
+          <article class="col-lg-9">
+            <div class="content container-md">
+              {{ parts[1] }}
+            </div>
+          </article>
+          <aside class="col-lg-1 d-none d-lg-block toc" style="border-left: 2px solid #eee;">
+
+            <h2 class="toc-title">
+              <span class="x-blue">/</span><span class="uneven-word"><span class="wobbleright">U</span><span>NEVEN</span><span class="x-blue">/</span>ODDS<span class="x-blue" style="color:#008CDB">\</span>
+            </h2>            
+          </aside> 
+        </div>
+ 
+    
+      {% else %}
+        <!-- Normal page layout -->
+        <div class="content container-md">
+          {{ content }}
+        </div>
+      {% endif %}
 
       {% if page.after-content %}
         <div class="after-content">
