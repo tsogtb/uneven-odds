@@ -8,7 +8,7 @@ full-width: true
 animate-cover: true
 ---
 
-{: .toc }
+{: .toc } 
 
 - TOC
 {:toc}
