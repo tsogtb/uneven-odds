@@ -243,6 +243,21 @@ see that the negativity has way more impact than positivity that seems kind of n
 
 **[Interactive table of correlation with link sentiment]**
 
+<iframe
+  src="assets\plots\corr_linksentiment\top_positive_bar.html"
+  width="800"
+  height="500"
+  style="border: none;">
+</iframe>
+<iframe
+  src="assets\plots\corr_linksentiment\top_negative_bar.html"
+  width="800"
+  height="500"
+  style="border: none;">
+</iframe>
+
+
+
 **[Add a barplot with a few features (those from the table, anger, swear, posemo, negemo) and see the part of positive and negative links]**
 
 
