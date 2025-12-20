@@ -17,8 +17,31 @@ animate-cover: true
 
 <!--toc-->
 
-### Introduction 
 
+
+
+
+
+<!--opening scene-->
+
+<details class="iframe-sticky">
+  <summary style="color:#FFF">Miniature Universe</summary>
+
+  <iframe
+    src="{{ site.baseurl }}/regl-graphics/"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+</details>
+
+### Understanding the Reddit Hyperlink Network
+### What Are Polarity Asymmetries?
+### Finding the Most Asymmetric Pairs
+### The Language of Conflict
+### Network Roles and Impact
+### The Bigger Picture: What This Tells Us
+
+![alt](./assets/img/snoo.png)
 If Reddit communities were people at a party, some would spend the whole evening debating loudly, others
 would quietly observe from the corner, and a few would spend their time gossiping about groups who barely
 even know they exist.
@@ -108,7 +131,7 @@ Explain the interactions with the LIWC features, their importance in the link se
 them. Make an ML model to predict which LIWC will mostly lead to a negative sentiment.
 
 <u>What is LIWC?</u>
-Small <a href="/LIWC/" target="_blank" rel="noopener">part</a> on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind
+Small <a href="/liwc/" target="_blank" rel="noopener">part</a> on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind
 it, and their importance in our analysis. à speech bubble where our reddit character is questioning himself?
 
 <u>Hostile vs non-hostile language</u>

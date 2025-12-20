@@ -1,3 +1,8 @@
+exclude:  
+  - node_modules
+
+url: "https://tsogtb.github.io"
+baseurl: "/uneven-odds"
 ###########################################################
 ### Welcome to Beautiful Jekyll!
 ### This config file is meant for settings that affect your entire website. When you first
@@ -20,8 +25,8 @@ author: NovaKrest25
 ###############################################
 
 navbar-links:
-  Highlights: "hyperlinks"
-  LIWC: "LIWC"
+  Highlights: "highlights"
+  LIWC: "liwc"
   About: "about"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"

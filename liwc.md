@@ -4,7 +4,7 @@ title: LIWC
 subtitle: Browse Reddit like never before!  
 toc: true
 full-width: true
-permalink: /LIWC/
+permalink: /liwc/
 ---
 
 {: .toc }
