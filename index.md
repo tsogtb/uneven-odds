@@ -38,7 +38,7 @@ Yet, behind Reddit’s chaotic surface lies a vast web of interactions: every ti
 <!-- What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
 What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time? Could Reddit’s community dynamics resemble those of our real-world society? -->
 
-<div class="dialogue">
+<!-- <div class="dialogue">
   <div class="bubble">
     What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
   </div>
@@ -50,7 +50,13 @@ What if we could map Reddit not as a collection of isolated forums, but as a liv
   <div class="bubble">
     Could Reddit’s community dynamics resemble those of our real-world society?
   </div>
-</div>
+</div> -->
+
+<blockquote>
+  What if we could uncover not just who speaks, but who speaks about whom, and in what tone?<br><br>
+  What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time?<br><br>
+  Could Reddit’s community dynamics resemble those of our real-world society?
+</blockquote>
 
 
 By analyzing millions of directed links enriched with sentiment, we can finally explore these hidden dynamics: which groups attract admiration, which spark conflicts, which act as hubs of attention, and which are talked about far more than they ever reply.
@@ -772,10 +778,20 @@ At the same time, being structurally balanced does not guarantee symmetry: some 
 	<div class="plotly-holder"></div>
 </details>
 
+
+A quick takeaway from this figure is that structural skew and sentiment asymmetry only weakly align.
+Most subreddits cluster near zero appearances in top asymmetric pairs, regardless of whether they send or receive more links. A few extreme broadcasters (large negative skew, like <span style="color: #4C72B0; font-weight: 600;">r/subredditdrama</span> or <span style="color: #4C72B0; font-weight: 600;">r/bestof</span>) do appear repeatedly in asymmetric relationships, suggesting that heavy outward activity can amplify sentiment imbalances—but this is not systematic. On the other side, highly visible subreddits with strong incoming attention (positive skew, like <span style="color: #4C72B0; font-weight: 600;">r/worldnews</span> or <span style="color: #4C72B0; font-weight: 600;">r/politics</span>) also appear in asymmetric pairs, yet no clear threshold of prominence guarantees involvement.
+
+<div style="background-color:#F3F8F4; padding:12px 16px; border-radius:6px; margin:1em 0;">
+🔑 Overall, the plot reinforces a key point: <strong>sentiment asymmetry is not a direct consequence of structural position.</strong> Visibility and activity shape exposure, but the emergence of asymmetric sentiment depends more on context and topic than on link volume alone.
+</div>
+
+
 ### Types of relationships
 
-So far, we have seen that asymmetry on Reddit does not arise randomly: it is shaped by who talks, who gets talked about, and how attention is distributed across communities. But asymmetry alone does not tell the whole story. Two asymmetric relationships can look very different depending on tone, direction, and response. To better understand what these imbalances actually mean, we now turn to the nature of the relationships themselves.
-Looking at the overall distribution, a clear pattern emerges: most asymmetric relationships are one-sided and positive, where one community frequently references another in a favorable or neutral way without much reaction in return. Mutual positivity is also relatively common, while mutual negativity is extremely rare. This tells us that most of Reddit is not in constant war, but when we do see extreme polarity differences, they are more often due to one side throwing rocks than two sides shouting at each other .When strong negativity appears, it is far more often unilateral than reciprocal, suggesting that Reddit is less dominated by ongoing feuds than by isolated communities directing criticism toward others, often without triggering a direct confrontation.
+So far, we have seen that asymmetry on Reddit does not arise randomly: it is shaped by who speaks, who gets talked about, and how attention is distributed across communities. But asymmetry alone does not tell the whole story. Two asymmetric relationships can look very different depending on tone, direction, and response. To better understand these differences, we now shift focus to the **types of relationships** that emerge from asymmetric interactions.
+
+The figure below provides an overview of these relationship types by categorizing subreddit pairs according to the direction and polarity of sentiment exchanged between them, offering a high-level map of how asymmetric sentiment manifests across the platform.
 
 
 <details class="plotly-details" data-src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}" open>
