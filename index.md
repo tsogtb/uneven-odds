@@ -174,7 +174,7 @@ $$
 
 This score is positive when A is more positive toward B than B is toward A, negative in the opposite case, and increases in magnitude as asymmetry becomes stronger and better supported by data. Pairs with insufficient observations in either direction are excluded to avoid unstable estimates.
 
-***Who talks much more than they listen—and what does that reveal?***
+**Who talks much more than they listen—and what does that reveal?**
 
 With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
