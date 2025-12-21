@@ -759,7 +759,7 @@ document.querySelectorAll(".plotly-details").forEach(details => {
             const plotDiv = doc.querySelector(".plotly-graph-div");
             if (plotDiv) {
 							const height = plotDiv.scrollHeight;
-              iframe.style.height = height + "px";
+              iframe.style.height = (20+height) + "px";
             }
           } catch (err) {
 						console.warn("Cannot access iframe content due to cross-origin restrictions");

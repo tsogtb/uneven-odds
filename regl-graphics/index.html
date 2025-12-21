@@ -35,7 +35,43 @@ layout: null
     </style>
 </head>
 <body>
+    <button id="next-story"
+        style="
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+            padding: 8px 12px;
+        ">
+        Next Story
+    </button>
+
     <canvas id="c" tabindex="1"></canvas>
+
+    <!-- Visualization info overlay -->
+    <div id="viz-info" class="overlay"></div>
+
+    <style>
+        #viz-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px; /* bottom-right corner */
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            pointer-events: none; /* doesn't block canvas input */
+            user-select: none;
+            text-align: right;
+        }
+
+        #viz-info b {
+            color: #FFD700; /* subtle emphasis on numbers */
+        }
+    </style>
 
     <!-- Instructions overlay -->
     <div id="instructions-start" class="overlay">

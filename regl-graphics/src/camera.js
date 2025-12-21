@@ -12,15 +12,15 @@ export class Camera {
     this.projection = mat4.create()
     this.view = mat4.create()
 
-    this.position = vec3.fromValues(0, 0, 0)
+    this.position = vec3.fromValues(0, 0, 5)
     this.up = vec3.fromValues(0, 1, 0)
     this.front = vec3.fromValues(0, 0, -1)
     this.right = vec3.fromValues(1, 0, 0)
 
     this.yaw = -Math.PI / 2
-    this.pitch = 0
+    this.pitch = 0;
 
-    this.speed = 1.0
+    this.speed = 10.0
     this.mouseSensitivity = 0.002
 
     this._initMouse()
@@ -55,7 +55,7 @@ export class Camera {
     
     vec3.set(this.front, x, y, z)
     vec3.normalize(this.front, this.front)
-    
+
     vec3.cross(this.right, this.front, this.up)
     vec3.normalize(this.right, this.right)
 
@@ -72,8 +72,6 @@ export class Camera {
     if (keys.has("KeyS")) vec3.sub(moveDir, moveDir, this.front)
     if (keys.has("KeyD")) vec3.add(moveDir, moveDir, this.right)
     if (keys.has("KeyA")) vec3.sub(moveDir, moveDir, this.right)
-
-    // moveDir[1] = 0; 
 
     if (vec3.length(moveDir) > 0) {
       vec3.normalize(moveDir, moveDir)

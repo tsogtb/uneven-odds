@@ -11,21 +11,26 @@ export function createRenderer(regl, starData) {
 			uniform float uTime; 
 			varying vec3 vColor;
 			varying float vSizeFactor; 
+
+      float hash(vec3 p) {
+        return fract(sin(dot(p, vec3(12.9898, 78.233, 45.164))) * 43758.5453);
+      }
 		
 			void main() {
-				float offset = position.x + position.y + position.z;
-				float twinkle = 0.9 + 0.1 * sin(uTime * 1.5 + offset * 10.0);
-				vColor = color * twinkle;
-		
-				vec4 mvPosition = view * vec4(position, 1.0);
-				gl_Position = projection * mvPosition;
-		
-				float baseSize = 100.0 + 90.0 * sin(offset + 123.45);
-				float perspectiveSize = baseSize / -mvPosition.z;
-		
-				gl_PointSize = max(perspectiveSize, 1.5);
-		
-				vSizeFactor = clamp(perspectiveSize / 1.5, 0.0, 1.0);
+        float starId = hash(position);
+        
+        float twinkle = 0.9 + 0.1 * sin(uTime * 1.5 + starId * 100.0);
+        vColor = color * twinkle;
+
+        vec4 mvPosition = view * vec4(position, 1.0);
+        gl_Position = projection * mvPosition;
+
+        // Use starId instead of spatial offset to determine size
+        float baseSize = 40.0 + 80.0 * starId; 
+        float perspectiveSize = baseSize / -mvPosition.z;
+
+        gl_PointSize = max(perspectiveSize, 1.5);
+        vSizeFactor = clamp(perspectiveSize / 1.5, 0.0, 1.0);
 			}
 		`,
 		frag: `
@@ -45,7 +50,7 @@ export function createRenderer(regl, starData) {
 			}
 		`,
     attributes: {
-      position: starData.buffer,      
+      position: starData.buffer,     
       color: starData.colorBuffer
     },
     uniforms: {
@@ -53,7 +58,7 @@ export function createRenderer(regl, starData) {
       view: regl.prop('view'),
 			uTime: regl.prop('uTime'),
     },
-    count: starData.count,           
+    count: starData.count,            
     primitive: 'points',
 		blend: {
 			enable: true,
@@ -104,12 +109,10 @@ export function createRenderer(regl, starData) {
     cull: { enable: false },
   })
 
- 
   const drawMesh = regl({
     vert,
     frag,
     attributes: {
-  
       position: regl.prop("positions"),
     },
     elements: regl.prop("elements"),

@@ -15,6 +15,66 @@ const regl = createREGL({
     }
 })
 
+// UPDATED: Define data stories
+const stories = [
+  {
+    description: "- Let’s take a quick tour of this miniature universe.",
+    generate: () => createStarData(regl, { passive: true })
+  },
+  {
+    description: "body hyperlink vs. title hyperlinks",
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        { num_stars: 2865, center: { x: 1.5, y: 0, z: 0 }, radius: 0.7, color: [1.0, 0.2, 0.2] },
+        { num_stars: 5719, center: { x: -1.5, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0] }
+      ]
+    })
+  },
+  {
+    description: "Each star represents a subreddit. Passive mode shows <b>67,180</b> subreddits.",
+    generate: () => createStarData(regl, { passive: true })
+  },
+  {
+    description: "Clustered stars representing sample communities.",
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        { num_stars: 2865, center: { x: 1.5, y: 0, z: 0 }, radius: 0.7, color: [1.0, 0.2, 0.2] },
+        { num_stars: 5719, center: { x: -1.5, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0] }
+      ]
+    })
+  }
+  // Add more stories here
+];
+
+// UPDATED: Track current story index
+let currentStoryIndex = 0;
+
+// UPDATED: Utility to load a story
+function loadStory(index) {
+  if (starData) {
+    starData.buffer.destroy();
+    starData.colorBuffer.destroy();
+  }
+
+  starData = stories[index].generate();
+  render = createRenderer(regl, starData);
+  document.getElementById("viz-info").innerHTML = stories[index].description; // update overlay
+}
+
+// INITIAL load
+let starData = stories[currentStoryIndex].generate();
+let render = createRenderer(regl, starData);
+document.getElementById("viz-info").innerHTML = stories[currentStoryIndex].description; // UPDATED
+
+// UPDATED: Next Story button
+document.getElementById("next-story").addEventListener("click", () => {
+  currentStoryIndex = (currentStoryIndex + 1) % stories.length;
+  loadStory(currentStoryIndex);
+});
+
+
 function resize() {
     const dpr = window.devicePixelRatio || 1
     
@@ -32,9 +92,11 @@ window.addEventListener("resize", resize)
 resize()
 
 const camera = new Camera(canvas)
-const starData = createStarData(regl)
+
+
 const scene = createScene()
-const render = createRenderer(regl, starData)
+
+
 
 let prevTime = 0
 
