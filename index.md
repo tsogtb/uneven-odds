@@ -103,21 +103,6 @@ Each Reddit post linking from a source subreddit to a target subreddit is treate
 
 For every unordered pair of subreddits {A, B}, we compute sentiment statistics in both directions:
 
-<table>
-  <tr>
-    <th align="center">Direction</th>
-    <th align="center">Definition</th>
-  </tr>
-  <tr>
-    <td align="center">A → B</td>
-    <td>sentiment of all links from A to B</td>
-  </tr>
-  <tr>
-    <td align="center">B → A</td>
-    <td>sentiment of all links from B to A</td>
-  </tr>
-</table>
-
 <div style="height: 20px;"></div>
 
 <details>
@@ -925,7 +910,7 @@ Finally, we look at how asymmetric relationships evolve between 2014 and 2017: d
 
 Reddit has a reputation for being loud, chaotic, and perpetually angry. And yes—there is plenty of negativity. But when we zoom out, what we find is not a constant shouting match. It’s something far more organized.
 
-Asymmetry is the rule, not the exception. Most communities talk about others far more than they talk with them. Most interactions are one-sided, usually positive, and surprisingly calm. When negativity does appear, it’s rarely a two-sided brawl. More often, it’s one subreddit throwing a punch while the other keeps scrolling.
+Asymmetry is the rule, not the exception. Most interactions are one-sided, usually positive, and surprisingly calm. When negativity does appear, it’s rarely a two-sided brawl. More often, it’s one subreddit throwing a punch while the other keeps scrolling.
 
 A small cast of familiar characters shows up again and again: reliable critics who never miss an opportunity to comment, highly visible hubs that absorb attention whether they want it or not, and a rotating middle group that flares up whenever the news cycle demands it. These roles persist over time, even as Reddit itself grows larger and busier—suggesting that some communities are not having bad days so much as being who they are.
 
