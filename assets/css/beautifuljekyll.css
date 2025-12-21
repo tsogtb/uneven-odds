@@ -1299,3 +1299,51 @@ pre {
   width: 100%;
   border-collapse: collapse;
 }
+
+.plotly-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+}
+
+.plotly-details summary:hover,
+.plotly-details summary:focus-visible {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ED001C;
+}
+
+.plotly-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.plotly-details summary::before {
+  content: "▸";
+  color: #ED001C;
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.plotly-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.plotly-holder {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.plotly-holder iframe {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  border: 0;
+}
+
+
+.plotly-details summary:hover::before {
+  color: #000;
+}

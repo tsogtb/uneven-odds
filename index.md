@@ -38,6 +38,46 @@ animate-cover: true
 - Visual: Interactive network diagram highlighting this extreme asymmetric pair
 - Key Metrics: Maximum asymmetry score = 2.000, 619,334 unique subreddit pairs analyzed, 59,952 bidirectional pairs
 
+<!--
+<iframe
+	src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
+	loading="lazy"
+	width="100%"
+	height="600"
+	frameborder="0">
+</iframe>
+-->
+
+<details class="plotly-details" id="plotly-details">
+  <summary>Relationship Plot</summary>
+  <div class="plotly-holder"></div>
+</details>
+
+<script>
+document.getElementById("plotly-details").addEventListener("toggle", e => {
+  const details = e.currentTarget
+  const holder = details.querySelector(".plotly-holder")
+
+  if (details.open) {
+    // CREATE on open
+    if (!holder.firstChild) {
+      const iframe = document.createElement("iframe")
+      iframe.src = "{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
+      iframe.loading = "lazy"
+      iframe.width = "100%"
+      iframe.height = "500"
+      iframe.frameBorder = "0"
+      iframe.style.display = "block"
+      holder.appendChild(iframe)
+    }
+  } else {
+    // DESTROY on close
+    holder.innerHTML = ""
+  }
+})
+</script>
+
+
 ---
 
 ## 2. Setting the Stage: Understanding the Reddit Hyperlink Network
