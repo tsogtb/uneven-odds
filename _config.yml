@@ -1,3 +1,6 @@
+exclude:  
+  - node_modules
+
 url: "https://tsogtb.github.io"
 baseurl: "/uneven-odds"
 ###########################################################

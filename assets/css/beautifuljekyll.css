@@ -1206,7 +1206,6 @@ pre {
 .toc a {
   color: #666;
   text-decoration: none;
-  text-decoration-line: underline;
 }
 
 .toc a:hover {
@@ -1239,4 +1238,112 @@ pre {
 @keyframes wobLeft {
   from { transform: rotate(5deg); }
   to   { transform: rotate(-5deg); }
+}
+
+/* === Sticky collapsible iframe === */
+
+.iframe-sticky {
+  position: sticky;
+  top: 0; 
+  z-index: 9999;
+  background: transparent;
+}
+
+.iframe-sticky summary {
+  cursor: pointer;
+  font-weight: 600;
+  height: 3.1875rem;
+  padding: 0.7rem 1rem;
+  background: #000;
+  list-style: none;
+  border-left: 2px solid #ED001C;
+  border-right: 2px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.iframe-sticky summary::-webkit-details-marker {
+  display: none;
+}
+
+.iframe-sticky summary::before {
+  content: "▸";
+  color: #ED001C;
+  display: inline-block;
+  margin-right: 0.25rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.iframe-sticky[open] summary::before {
+  transform: rotate(90deg);
+  color: #008CDB; ;
+}
+
+.iframe-sticky iframe {
+  width: 100%;
+  height: 60vh;
+  border: none;
+  display: block;
+}
+
+.iframe-sticky[open] {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.plotly-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+}
+
+.plotly-details summary:hover,
+.plotly-details summary:focus-visible {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ED001C;
+}
+
+.plotly-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.plotly-details summary::before {
+  content: "▸";
+  color: #ED001C;
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.plotly-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.plotly-holder {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.plotly-holder iframe {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  border: 0;
+}
+
+
+.plotly-details summary:hover::before {
+  color: #000;
 }

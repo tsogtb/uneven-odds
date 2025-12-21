@@ -14,319 +14,728 @@ animate-cover: true
 {:toc}
 
 
-
 <!--toc-->
 
-### Introduction  test
-
-If Reddit communities were people at a party, some would spend the whole evening debating loudly, others
-would quietly observe from the corner, and a few would spend their time gossiping about groups who barely
-even know they exist.
-Online platforms are often described through trends, topics, or viral posts, but rarely do we look at how entire
-communities talk about one another.
-Yet, behind Reddit’s chaotic surface lies a vast web of interactions: every time a subreddit links to another, it
-expresses something, approval, criticism, curiosity, or sometimes outright hostility. What if we could map these
-signals? What if we could uncover not just who speaks, but who speaks about whom, and how?
-
-**[graph of reddit communities and links]**
-
-This is where the best data analysists of the universe <a href="/about/" target="_blank" rel="noopener">we</a> come in action
-
-**[presentation of each of us]**
-
-### Dataset
-
-The Reddit Hyperlink Network dataset contains 858,488 hyperlinks exchanged between 67,180 subreddits from
-2014 to 2017. Each hyperlink represents one subreddit mentioning another in a post, giving us a directional
-interaction (A → B) along with its timestamp. Each link is enriched with a sentiment score (positive, neutral, or
-negative) and detailed linguistic features from LIWC, capturing emotions, tone, and cognitive signals.
-Together, these elements allow us to reconstruct Reddit as a network of inter-community relationships and
-explore how subreddits reference, praise, criticize, or ignore one another over time.
-
-**[Maybe a cool presentation of the important numbers in the dataset → see 4th project on beers]**
-
-### Research Questions
-
-1. **Which subreddit pairs show the strongest polarity asymmetries?**
-
-2. **Are one-sided hostilities different from mutual hostilities?**
 
 
-3. **What impact do polarity asymmetries have on the network?**
+<details class="iframe-sticky">
+  <summary style="color:#FFF">Miniature Universe</summary>
 
-<u>EDA and data pre-processing?</u>
-<u>When A hates B but B barely looks back</u>
-<u>Most relationships are boring… but a few are extreme</u>
+  <iframe
+    src="{{ site.baseurl }}/regl-graphics/"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+</details>
 
-### Methods
+---
 
-First, we average the sentiment from A→B and from B→A for every pair of subreddits. Then we compute an
-asymmetry score:
-if both directions have similar sentiment, the score is low; if one is friendly and the other is hostile (or one side
-is active and the other silent), the score is high.
-When we look at all pairs, most relationships are fairly balanced. But the distribution has a long tail: a small
-fraction of subreddit pairs show very strong asymmetry
+## 1. Hook: The Opening Scene
+**Goal**: Grab attention with a compelling, concrete example
 
-**[histogram of asymmetric score]**
+**Content**:
+- Opening line: "r/blackout2015 links to r/shittheadminssay with 100% negative sentiment across all 3 interactions. But when we look the other way, r/shittheadminssay links back with 100% positive sentiment across all 4 interactions. This is a one-sided war with an asymmetry score of 2.000—the most extreme case in our entire dataset."
+- Visual: Interactive network diagram highlighting this extreme asymmetric pair
+- Key Metrics: Maximum asymmetry score = 2.000, 619,334 unique subreddit pairs analyzed, 59,952 bidirectional pairs
 
-<u>The top “one-sided wars”</u>
+<!--
+<iframe
+	src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
+	loading="lazy"
+	width="100%"
+	height="600"
+	frameborder="0">
+</iframe>
+-->
 
-We then rank pairs by their asymmetry score and focus on the top cases. Present them and analyze in detail
-the plots and their results. We see that some patterns emerge from that: those who send negative links barely
-get answers from their target. Analyze maybe at this point the sizes of both communities.
+<details class="plotly-details" id="plotly-details">
+  <summary>Relationship Plot</summary>
+  <div class="plotly-holder"></div>
+</details>
 
-**[barplot – top asymmetric pairs]**
+<script>
+document.getElementById("plotly-details").addEventListener("toggle", e => {
+  const details = e.currentTarget
+  const holder = details.querySelector(".plotly-holder")
 
-**[interactive table with source-target-average sentimentA→B-average sentiment B→A-asymmetry type-asymmetry score]**
-
-
-### Types of relationships
-
-Clustering. Not all asymmetric pairs are the same. Based on sentiment in both directions, and whether the
-target answers or no, we classify them into:
-
-
-- **One-sided negative**: A is hostile to B; B is neutral or positive.
-- **Mutual negative**: A and B attack each other.
-- **One-sided positive**: one side is very positive, the other is neutral.
-- **Mutual positive**: they praise each other.
-- **Mutual neutrality**: both acts neutrally to each other (asymmetric scrore around 0)
-- **Unidirectional**: only one side ever links to the other.
-
-<!-- Load Plotly.js from CDN -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-<!-- Relationship Type Distribution Visualization -->
-<div id="relationship-type-distribution" class="plotly-graph-div" style="height:500px; width:100%; max-width:1200px; margin: 0 auto;"></div>
-
-<script type="text/javascript">
-    window.PLOTLYENV = window.PLOTLYENV || {};
-    
-    function initPlotlyVisualization() {
-        if (typeof Plotly !== 'undefined' && document.getElementById("relationship-type-distribution")) {
-            Plotly.newPlot(
-            "relationship-type-distribution",
-            [
-                {
-                    "marker": {"color": ["rgb(141,211,199)", "rgb(255,255,179)", "rgb(190,186,218)", "rgb(251,128,114)", "rgb(128,177,211)", "rgb(253,180,98)", "rgb(179,222,105)"]},
-                    "name": "Relationship Type Counts",
-                    "opacity": 0.85,
-                    "x": ["one-sided (pos)", "mutual positive", "one-sided (neg)", "one-sided (neu)", "opposite polarity", "mutual negative", "mutual neutral"],
-                    "y": {"dtype": "i4", "bdata": "OPMDAJdoAAAgRQAAERMAAPcEAACZAAAAEwAAAA=="},
-                    "type": "bar",
-                    "xaxis": "x",
-                    "yaxis": "y"
-                },
-                {
-                    "hole": 0.35,
-                    "hovertemplate": "%{label}: %{percent:.2%} <extra></extra>",
-                    "labels": ["one-sided (pos)", "mutual positive", "one-sided (neg)", "one-sided (neu)", "opposite polarity", "mutual negative", "mutual neutral"],
-                    "marker": {"colors": ["rgb(141,211,199)", "rgb(255,255,179)", "rgb(190,186,218)", "rgb(251,128,114)", "rgb(128,177,211)", "rgb(253,180,98)", "rgb(179,222,105)"]},
-                    "name": "Relationship Type (Percentage)",
-                    "textinfo": "label+percent",
-                    "values": {"dtype": "f8", "bdata": "2NtdizPmVECUDUju8kohQDh5iZms2xZAipWZOSc4+T+y2gzhqUTaP3rAlm/+S6k/32Q2yaoheT8="},
-                    "type": "pie",
-                    "domain": {"x": [0.55, 1.0], "y": [0.0, 1.0]}
-                },
-                {"marker": {"color": "rgb(141,211,199)"}, "name": "one-sided (pos) (83.597%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(255,255,179)"}, "name": "mutual positive (8.646%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(190,186,218)"}, "name": "one-sided (neg) (5.715%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(251,128,114)"}, "name": "one-sided (neu) (1.576%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(128,177,211)"}, "name": "opposite polarity (0.410%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(253,180,98)"}, "name": "mutual negative (0.049%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"},
-                {"marker": {"color": "rgb(179,222,105)"}, "name": "mutual neutral (0.006%)", "x": [null], "y": [null], "type": "bar", "xaxis": "x", "yaxis": "y"}
-            ],
-            {
-                "template": {
-                    "data": {
-                        "histogram2dcontour": [{"type": "histogram2dcontour", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}],
-                        "choropleth": [{"type": "choropleth", "colorbar": {"outlinewidth": 0, "ticks": ""}}],
-                        "histogram2d": [{"type": "histogram2d", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}],
-                        "heatmap": [{"type": "heatmap", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}],
-                        "contourcarpet": [{"type": "contourcarpet", "colorbar": {"outlinewidth": 0, "ticks": ""}}],
-                        "contour": [{"type": "contour", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}],
-                        "surface": [{"type": "surface", "colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}],
-                        "mesh3d": [{"type": "mesh3d", "colorbar": {"outlinewidth": 0, "ticks": ""}}],
-                        "scatter": [{"fillpattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}, "type": "scatter"}],
-                        "parcoords": [{"type": "parcoords", "line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scatterpolargl": [{"type": "scatterpolargl", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}, "pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "bar"}],
-                        "scattergeo": [{"type": "scattergeo", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scatterpolar": [{"type": "scatterpolar", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "histogram": [{"marker": {"pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "histogram"}],
-                        "scattergl": [{"type": "scattergl", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scatter3d": [{"type": "scatter3d", "line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scattermap": [{"type": "scattermap", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scattermapbox": [{"type": "scattermapbox", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scatterternary": [{"type": "scatterternary", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "scattercarpet": [{"type": "scattercarpet", "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}}],
-                        "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}],
-                        "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}],
-                        "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}, "pattern": {"fillmode": "overlay", "size": 10, "solidity": 0.2}}, "type": "barpolar"}],
-                        "pie": [{"automargin": true, "type": "pie"}]
-                    },
-                    "layout": {
-                        "autotypenumbers": "strict",
-                        "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"],
-                        "font": {"color": "#2a3f5f"},
-                        "hovermode": "closest",
-                        "hoverlabel": {"align": "left"},
-                        "paper_bgcolor": "white",
-                        "plot_bgcolor": "#E5ECF6",
-                        "polar": {"bgcolor": "#E5ECF6", "angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}},
-                        "ternary": {"bgcolor": "#E5ECF6", "aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}},
-                        "coloraxis": {"colorbar": {"outlinewidth": 0, "ticks": ""}},
-                        "colorscale": {
-                            "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]],
-                            "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]],
-                            "diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]]
-                        },
-                        "xaxis": {"gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2},
-                        "yaxis": {"gridcolor": "white", "linecolor": "white", "ticks": "", "title": {"standoff": 15}, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2},
-                        "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2}},
-                        "shapedefaults": {"line": {"color": "#2a3f5f"}},
-                        "annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1},
-                        "geo": {"bgcolor": "white", "landcolor": "#E5ECF6", "subunitcolor": "white", "showland": true, "showlakes": true, "lakecolor": "white"},
-                        "title": {"x": 0.05},
-                        "mapbox": {"style": "light"}
-                    }
-                },
-                "xaxis": {"anchor": "y", "domain": [0.0, 0.45], "title": {"text": "Relationship Type"}, "tickangle": 45},
-                "yaxis": {"anchor": "x", "domain": [0.0, 1.0], "title": {"text": "Number of Pairs (log scale)"}, "type": "log"},
-                "annotations": [
-                    {"font": {"size": 16}, "showarrow": false, "text": "Distribution of Relationship Types", "x": 0.225, "xanchor": "center", "xref": "paper", "y": 1.0, "yanchor": "bottom", "yref": "paper"},
-                    {"font": {"size": 16}, "showarrow": false, "text": "Relationship Types (Percentage)", "x": 0.775, "xanchor": "center", "xref": "paper", "y": 1.0, "yanchor": "bottom", "yref": "paper"}
-                ],
-                "margin": {"t": 40, "l": 30, "r": 30, "b": 30},
-                "height": 500,
-                "width": 1200,
-                "showlegend": false,
-                "legend": {"title": {"text": "Relationship Type"}, "x": 1.05, "y": 0.8, "bordercolor": "Black", "borderwidth": 0.5}
-            },
-            {"responsive": true}
-            );
-        }
+  if (details.open) {
+    // CREATE on open
+    if (!holder.firstChild) {
+      const iframe = document.createElement("iframe")
+      iframe.src = "{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
+      iframe.loading = "lazy"
+      iframe.width = "100%"
+      iframe.height = "500"
+      iframe.frameBorder = "0"
+      iframe.style.display = "block"
+      holder.appendChild(iframe)
     }
-    
-    // Wait for Plotly to load, then initialize
-    if (typeof Plotly !== 'undefined') {
-        initPlotlyVisualization();
-    } else {
-        window.addEventListener('load', function() {
-            if (typeof Plotly !== 'undefined') {
-                initPlotlyVisualization();
-            }
-        });
-    }
+  } else {
+    // DESTROY on close
+    holder.innerHTML = ""
+  }
+})
 </script>
 
-// Analyze: “This tells us that most of Reddit is not in
-constant war, but when we do see extreme polarity differences, they are more often due to one side throwing
-rocks than two sides shouting at each other.
 
-### Closer look at the interactions
+---
 
-<u>Do One-Sided Attacks “sound” different?</u>
-<u>How do interactions looks like ?</u>
+## 2. Setting the Stage: Understanding the Reddit Hyperlink Network
+**Goal**: Help readers understand what we're analyzing
 
-Explain the interactions with the LIWC features, their importance in the link sentiment, and how to interpret
-them. Make an ML model to predict which LIWC will mostly lead to a negative sentiment.
+**Content**:
+- What is a hyperlink network?: Subreddits mention/link to each other in posts
+- The Data: 858,488 hyperlinks, 67,180 subreddits, 2014-2017, 65 LIWC features
+- Visual: Timeline showing network growth (31 → 7,112 subreddits), sentiment distribution (90% positive)
 
-<u>What is LIWC?</u>
-Small <a href="/liwc/" target="_blank" rel="noopener">part</a> on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind
-it, and their importance in our analysis. à speech bubble where our reddit character is questioning himself?
+---
 
-<u>Hostile vs non-hostile language</u>
+## 3. The Discovery: What Are Polarity Asymmetries?
+**Goal**: Define the core concept clearly
 
-Analyze the impact of some LIWC features on whether the message will be considered negaFve or positive we
-see that the negativity has way more impact than positivity that seems kind of neutral.
+**Content**:
+- Definition: Asymmetric relationships where sentiment A→B ≠ B→A
+- Types: Various asymmetry types including one-sided negative (A→B negative, B→A positive/neutral), one-sided positive, mutual positive, mutual negative, and unidirectional relationships
+- Key Finding: Out of 619,334 unique pairs, only 59,952 have links in both directions—most relationships are unidirectional
+- Visual: Side-by-side comparison diagrams, scatter plot (sentiment A→B vs. B→A), asymmetry type distribution chart
 
-**[Interactive table of correlation with link sentiment]**
+---
 
-<iframe
-  src="assets\plots\corr_linksentiment\top_positive_bar.html"
-  width="800"
-  height="500"
-  style="border: none;">
-</iframe>
-<iframe
-  src="assets\plots\corr_linksentiment\top_negative_bar.html"
-  width="800"
-  height="500"
-  style="border: none;">
-</iframe>
+## 4. Research Question 1: Finding the Most Asymmetric Pairs
+**Goal**: Answer "Which pairs show strongest asymmetries?"
 
+**Content**:
+- Method: Analyzed 619,334 unique subreddit pairs, calculated asymmetry scores based on sentiment differences
+- Results: Top 20 most asymmetric pairs identified, with blackout2015 ↔ shittheadminssay having the maximum asymmetry score of 2.000
+- Key Insight: Most extreme asymmetries occur when one subreddit is completely negative (sentiment = -1.0) while the other is completely positive (sentiment = +1.0)
+- Visual: Bar chart of top pairs, scatter plot with asymmetry scores, network subgraph highlighting extreme pairs
 
+**ML Enhancement**:
+- Random Forest regression achieves R² = 0.9996, Linear Regression achieves R² = 0.6402
+- Network centrality and activity patterns are strong predictors of asymmetry scores
+- Feature importance plot shows which network features matter most
+- Predicted vs. actual scores visualization demonstrates model accuracy
 
-**[Add a barplot with a few features (those from the table, anger, swear, posemo, negemo) and see the part of positive and negative links]**
+---
 
+## 5. Research Question 2: The Language of Conflict
+**Goal**: Answer "Are one-sided hostilities different in nature from mutual hostilities?"
 
-<u>One-sided vs mutual hostilities</u>
+**Content**:
+- Method: Used pair-level features (asymmetry scores, sentiment differences, link patterns) to classify one-sided hostilities vs. other relationship types
+- Results: Pair-level features can effectively distinguish one-sided hostilities from other asymmetry types
+- Key Features: Asymmetry score, sentiment differences, link ratios, and link imbalance are most important
+- Visual: Feature importance plot, confusion matrix, classification performance metrics
 
-The most interesting question is not “What does negativity look like?” but “What’s different about a one-sided
-aiack compared to a mutual fight?”. We focus on these two groups: one-sided negative pairs and mutual
-negative pairs. For each group, we compare LIWC features.
+**ML Enhancement**:
+- Classification model (Random Forest and Logistic Regression) using pair-level features
+- Feature importance shows asymmetry score and sentiment differences are strongest predictors
+- High precision and recall for identifying one-sided hostilities
+- Simplified approach using already-computed pair statistics (much faster than aggregating LIWC features)
 
-**[barplot for visualization]**
+---
 
-### Attackers, Receivers and the Peaceful ones
+## 6. Research Question 3: Network Roles and Impact
+**Goal**: Answer "What impact do polarity asymmetries have on the broader network?"
 
-<u>From pairs to a global map</u>
+**Content**:
+- Subreddit Roles: 165 attackers, 146 receivers, 7,332 peaceful, 44 mutual hostile, 1,954 mixed, 967 balanced, 56,572 inactive
+- Key Finding: Most subreddits (84%) are inactive or peaceful—only a small fraction engage in hostile behavior
+- Network Centrality: Activity rates (outgoing/incoming negative rates) are key predictors of roles
+- Visual: Network diagram colored by role, centrality vs. role scatter plot, role distribution pie chart
 
-So far, we only looked at pairs of subreddits. But all these relaFonships live inside a much bigger structure: a
-network where each node is a subreddit and edges are hyperlinks between them. The objective here is to put
-these pairs into the context of all the subreddits interacFng with each other’s. Here we can see the most acFve
-ones, the most hostile and non-hostile ones, the more receiver ones…
+**ML Enhancement**:
+- Classification model predicting subreddit roles with varying performance across classes
+- Highest precision for peaceful subreddits (96.2%) and attackers (74.4%)
+- Feature importance: Outgoing negative rate (44.6%) and incoming negative rate are strongest predictors
+- Network centrality features (PageRank, in-degree, out-degree) can be added for enhanced prediction
 
-**[barplot with top10 or top20 subreddits of different categories]**
+---
 
-**[a big visualization of the network where the important subreddits and the interactions are visible àbigger dots and bigger edges]**
+## 7. The Bigger Picture: What This Tells Us
+**Goal**: Synthesize findings
 
-<u>Role types: attackers, receivers, peaceful</u>
+**Content**:
+- Key Findings: 
+  - Extreme asymmetries are rare but highly visible (maximum score of 2.000)
+  - Most relationships are unidirectional (only 9.7% of pairs have bidirectional links)
+  - Pair-level features (sentiment differences, link patterns) effectively distinguish one-sided hostilities
+  - Network roles are predictable: 84% of subreddits are inactive/peaceful, only 0.3% are attackers/receivers
+  - ML models achieve excellent performance (R² = 0.9996 for asymmetry prediction)
+- Implications: 
+  - Asymmetric power dynamics exist but are uncommon
+  - Most Reddit communities maintain neutral or positive relationships
+  - Network structure and activity patterns are strong predictors of behavior
+  - One-sided hostilities can be identified using simple pair-level statistics
+- Future Research: Why do extreme asymmetries form? Do they escalate over time? What prevents subreddits from responding to negative links?
 
-This gives us a coarse but intuitive typology of reddit communities
+---
 
-<u>Hierarchy: who shapes the landscape</u>
+## 8. Methodology & Technical Details
+**Goal**: Provide transparency
 
-Beyond roles, some communities are structurally central in the network: they receive links from many other subreddits and have high PageRank or in-degree. When we cross roles with centrality, we can see: whether receivers tend to be big, whether aiackers are more peripherical communities, whether peaceful communities play a central role in information flow.
+**Content**:
+- Data: Reddit Hyperlink Network (2014-2017)
+- Methods: Asymmetry scores, statistical tests, network analysis, ML models
+- Code: Link to GitHub
+- Limitations: Very few mutual hostilities, class imbalance
 
-**[boxplot PageRank by role]**
+---
 
-<u>Do asymmetries and link sentiment tend to change over time</u>
+## Visual Design Guidelines
 
-Finally, we look at how asymmetric relationships evolve between 2014 and 2017: does the number of one-sided hostilities increase or decrease? do certain subreddits keep the same role over years, or do they switch from peaceful to attacker, from receiver to mutual hostile?
+### Color Scheme
+- One-sided hostilities: Red/Orange
+- Peaceful/Positive: Green/Blue
+- Network nodes: Size = centrality, Color = role
 
-**[complete temporal analysis, maybe taking some examples subreddits and following their evolving curves]**
+### Interactive Elements
+- Hover tooltips on network nodes
+- Filterable tables
+- Interactive scatter plots
+- Timeline slider (if temporal analysis)
 
-### Conclusion
+---
 
-<u>What did we learn about Reddit and about the interactions between communities in general?</u>
+## Key Metrics to Highlight
+- 858,488 hyperlinks analyzed
+- 67,180 subreddits in the network
+- 619,334 unique subreddit pairs
+- 59,952 bidirectional pairs (pairs with links in both directions)
+- 2.000 maximum asymmetry score (blackout2015 ↔ shittheadminssay)
+- 165 attacker subreddits (primarily send negative links)
+- 146 receiver subreddits (primarily receive negative links)
+- 7,332 peaceful subreddits (low negative rates in both directions)
+- 44 mutual hostile subreddits (high negative rates in both directions)
+- ML Model Performance: R² = 0.9996 for asymmetry prediction (Random Forest)
 
-Our exploration of the Reddit Hyperlink Network reveals that online platforms are not just collections of isolated conversations—they are ecosystems where communities constantly observe, reference, judge, and respond to one another. By examining millions of directional links enriched with sentiment and linguistic
-information, we uncovered patterns that would remain invisible at the level of individual posts.
+---
 
-We learned that most subreddit relationships are relatively balanced, shaped by routine exchanges and neutral mentions. Yet beneath this surface lies a smaller but highly influential set of asymmetric relationships, where one community directs strong negativity toward another that barely replies, or where interaction flows in only one direction. These imbalances form the backbone of online attention dynamics: some subreddits act as outspoken critics, others as lightning rods, others still as peaceful enclaves detached from conflict.
+## Story Flow
+1. Hook → Extreme example
+2. Context → Data understanding
+3. Definition → Core concept
+4. RQ1 → Discovery
+5. RQ2 → Deep dive
+6. RQ3 → Big picture
+7. Synthesis → Meaning
+8. Methods → Transparency
 
-anguage plays a central role in shaping these dynamics. Hostile interactions carry distinct emotional and
-cognitive signatures, and one-sided hostility often looks linguistically different from mutual rivalry. These
-linguistic signals help us understand why certain interactions escalate and others remain one-directional.
-Can we really say that wars are ongoing in social medias? Do Reddit can be representative of the others? Why
-in the end the climate is always negative, even though we saw that the negativity isn’t dominant at all?
-If “war” is understood not as physical confrontation but as asymmetric engagement and emotional escalation,
-then yes, our findings show that some of these dynamics do emerge in social media interactions. They are
-subtle, distributed, and linguistic rather than physical, but they shape the reputation, cohesion, and visibility of
-communities in powerful ways.
-Ultimately, what we uncovered is not a battlefield, but a complex social landscape where attention is uneven,
-emotions travel asymmetrically, and communities position themselves relative to one another in ways that
-matter for how information spreads and how online identities are constructed.
-Our work highlights that understanding these dynamics is not about labeling winners and losers, but about
-gaining insight into how digital societies function, and how relationships between groups evolve online,
-sometimes harmoniously, often unevenly, and occasionally, in ways that resemble one-sided wars.
-
-2 main parts:
-1. analysis of the interacIons and links
-2. analysis of the features and their importance in the senIment
-3 research quesIons:
-4. Which subreddit pairs show the strongest polarity asymmetries?
-5. Are one-sided hosIliIes different from mutual hosIliIes?
-6. What impact do polarity asymmetries have on the network?
+<div style="max-height: 400px; overflow: auto; border: 2px solid #eee; padding: 8px;">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>subreddit_A</th>
+      <th>subreddit_B</th>
+      <th>sentiment_A_to_B</th>
+      <th>count_A_to_B</th>
+      <th>sentiment_B_to_A</th>
+      <th>count_B_to_A</th>
+      <th>asymmetry_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>anarchism</td>
+      <td>drama</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.016129</td>
+      <td>124.0</td>
+      <td>10.957349</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>subredditdrama</td>
+      <td>todayilearned</td>
+      <td>0.327660</td>
+      <td>235.0</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>-10.909006</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>asktrp</td>
+      <td>thebluepill</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.302326</td>
+      <td>215.0</td>
+      <td>10.732128</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gaming</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.337500</td>
+      <td>160.0</td>
+      <td>8.902378</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>hearthstone</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>0.175258</td>
+      <td>97.0</td>
+      <td>8.250465</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>hearthstone</td>
+      <td>hearthstonecirclejerk</td>
+      <td>-0.641026</td>
+      <td>39.0</td>
+      <td>0.562500</td>
+      <td>96.0</td>
+      <td>-8.072893</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>conspiracy</td>
+      <td>worldnews</td>
+      <td>0.560748</td>
+      <td>214.0</td>
+      <td>1.000000</td>
+      <td>6.0</td>
+      <td>-7.760641</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>india</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>6.0</td>
+      <td>0.400000</td>
+      <td>140.0</td>
+      <td>7.745967</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>conservative</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.445946</td>
+      <td>148.0</td>
+      <td>7.530623</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>conspiracy</td>
+      <td>gmomyths</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.455782</td>
+      <td>147.0</td>
+      <td>7.413047</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>subredditdrama</td>
+      <td>subredditdramadrama</td>
+      <td>1.000000</td>
+      <td>6.0</td>
+      <td>0.509677</td>
+      <td>155.0</td>
+      <td>7.095201</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>sf4</td>
+      <td>streetfighter</td>
+      <td>1.000000</td>
+      <td>6.0</td>
+      <td>0.721429</td>
+      <td>280.0</td>
+      <td>6.731360</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>conspiratard</td>
+      <td>nolibswatch</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.111111</td>
+      <td>54.0</td>
+      <td>6.572671</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>asoiaf</td>
+      <td>asoiafcirclejerk</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.597561</td>
+      <td>164.0</td>
+      <td>6.427517</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>badphilosophy</td>
+      <td>badphilosophy2</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-0.411765</td>
+      <td>17.0</td>
+      <td>6.387488</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>mensrights</td>
+      <td>twoxchromosomes</td>
+      <td>0.315068</td>
+      <td>73.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-6.166104</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>halo</td>
+      <td>halocirclejerk</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.615385</td>
+      <td>156.0</td>
+      <td>6.094494</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>conspiracy</td>
+      <td>news</td>
+      <td>0.620253</td>
+      <td>158.0</td>
+      <td>1.000000</td>
+      <td>10.0</td>
+      <td>-6.085331</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>syriancirclejerkwar</td>
+      <td>syrianrebels</td>
+      <td>0.073171</td>
+      <td>41.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-5.950554</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>conspiracy</td>
+      <td>politics</td>
+      <td>0.662500</td>
+      <td>160.0</td>
+      <td>1.000000</td>
+      <td>29.0</td>
+      <td>-5.699228</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>corejerk</td>
+      <td>metalcore</td>
+      <td>0.657534</td>
+      <td>146.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-5.492294</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>the_donald</td>
+      <td>topmindsofreddit</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.463415</td>
+      <td>82.0</td>
+      <td>5.483308</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>the_donald</td>
+      <td>worldnews</td>
+      <td>0.463415</td>
+      <td>82.0</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>-5.483308</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>bestof</td>
+      <td>drama</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>-0.200000</td>
+      <td>20.0</td>
+      <td>5.477226</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>itspronouncedgif</td>
+      <td>writingprompts</td>
+      <td>1.000000</td>
+      <td>16.0</td>
+      <td>-0.666667</td>
+      <td>6.0</td>
+      <td>5.477226</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>metal</td>
+      <td>metaljerk</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.738693</td>
+      <td>199.0</td>
+      <td>5.468776</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>bestoflegaladvice</td>
+      <td>legaladvice</td>
+      <td>0.375000</td>
+      <td>64.0</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>-5.393599</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>fitnesscirclejerk</td>
+      <td>powerlifting</td>
+      <td>0.662338</td>
+      <td>77.0</td>
+      <td>-0.529412</td>
+      <td>17.0</td>
+      <td>5.349690</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>socialism</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.588785</td>
+      <td>107.0</td>
+      <td>5.262520</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>magictcg</td>
+      <td>magicthecirclejerking</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>0.727811</td>
+      <td>169.0</td>
+      <td>5.159776</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>bakchodi</td>
+      <td>india</td>
+      <td>0.592233</td>
+      <td>103.0</td>
+      <td>1.000000</td>
+      <td>16.0</td>
+      <td>-5.135956</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>guns</td>
+      <td>weekendgunnit</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.389831</td>
+      <td>59.0</td>
+      <td>5.089444</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>askhistorians</td>
+      <td>badhistory</td>
+      <td>1.000000</td>
+      <td>18.0</td>
+      <td>0.486486</td>
+      <td>74.0</td>
+      <td>5.056049</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>conspiracy</td>
+      <td>technology</td>
+      <td>0.446154</td>
+      <td>65.0</td>
+      <td>1.000000</td>
+      <td>10.0</td>
+      <td>-4.989350</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>feminism</td>
+      <td>mensrights</td>
+      <td>1.000000</td>
+      <td>9.0</td>
+      <td>0.230769</td>
+      <td>39.0</td>
+      <td>4.937104</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>legaladvice</td>
+      <td>mensrights</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.071429</td>
+      <td>28.0</td>
+      <td>4.926121</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>libertarian</td>
+      <td>politics</td>
+      <td>0.544304</td>
+      <td>79.0</td>
+      <td>1.000000</td>
+      <td>10.0</td>
+      <td>-4.828196</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>civcraft</td>
+      <td>civcringe</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>0.644860</td>
+      <td>107.0</td>
+      <td>4.806482</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>thebluepill</td>
+      <td>theredpill</td>
+      <td>0.428571</td>
+      <td>56.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-4.732864</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>askreddit</td>
+      <td>changemyview</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.076923</td>
+      <td>26.0</td>
+      <td>4.720775</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>joerogan</td>
+      <td>joerogan2</td>
+      <td>0.931034</td>
+      <td>87.0</td>
+      <td>0.344262</td>
+      <td>61.0</td>
+      <td>4.641556</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>iamverysmart</td>
+      <td>subredditdrama</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>0.492063</td>
+      <td>63.0</td>
+      <td>4.631070</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>femradebates</td>
+      <td>femrameta</td>
+      <td>1.000000</td>
+      <td>7.0</td>
+      <td>0.492063</td>
+      <td>63.0</td>
+      <td>4.631070</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>bestof</td>
+      <td>india</td>
+      <td>0.604651</td>
+      <td>86.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-4.603087</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>conspiracy</td>
+      <td>todayilearned</td>
+      <td>0.712000</td>
+      <td>125.0</td>
+      <td>1.000000</td>
+      <td>8.0</td>
+      <td>-4.585634</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>fitness</td>
+      <td>powerlifting</td>
+      <td>1.000000</td>
+      <td>22.0</td>
+      <td>0.297297</td>
+      <td>37.0</td>
+      <td>4.476792</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>enough_sanders_spam</td>
+      <td>enoughtrumpspam</td>
+      <td>0.404255</td>
+      <td>47.0</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>-4.465355</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>bestof</td>
+      <td>nostupidquestions</td>
+      <td>0.632184</td>
+      <td>87.0</td>
+      <td>1.000000</td>
+      <td>3.0</td>
+      <td>-4.427825</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>gcdebatesqt</td>
+      <td>gendercynical</td>
+      <td>1.000000</td>
+      <td>5.0</td>
+      <td>0.380952</td>
+      <td>42.0</td>
+      <td>4.339077</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>badeconomics</td>
+      <td>economics</td>
+      <td>0.755725</td>
+      <td>131.0</td>
+      <td>1.000000</td>
+      <td>4.0</td>
+      <td>-4.269202</td>
+    </tr>
+  </tbody>
+</table>
+</div>
