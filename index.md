@@ -112,6 +112,8 @@ For every unordered pair of subreddits {A, B}, we compute sentiment statistics i
 </table>
 
 
+<details>
+<summary>Mathematical Formula</summary>
 
 Let the sentiment of the i-th link from A to B be denoted by  
 
@@ -171,6 +173,9 @@ $$
 \mathrm{Asymmetry}(A,B) =
 \frac{\bar{X}_{A \to B} - \bar{X}_{B \to A}}{\mathrm{SE}(\Delta)}.
 $$
+
+</details>
+
 
 This score is positive when A is more positive toward B than B is toward A, negative in the opposite case, and increases in magnitude as asymmetry becomes stronger and better supported by data. Pairs with insufficient observations in either direction are excluded to avoid unstable estimates.
 
