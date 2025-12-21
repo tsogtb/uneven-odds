@@ -886,6 +886,28 @@ Between these two extremes lies a more volatile group, including **r/pics**, **r
 
 ### Who Sits at the Center? Network Centrality by Role
 
+<details>
+<summary style="font-weight: bold;">What is PageRank?</summary>
+PageRank is a centrality measure that identifies the most influential nodes in a network. 
+It was originally developed by Google to rank web pages.
+
+Concept: 
+A node is important if it is linked to by other important nodes.
+
+Formula: 
+$$
+PR(i) = \frac{1-d}{N} + d \sum_{j \in M(i)} \frac{PR(j)}{L(j)}
+$$
+
+Where: 
+- \( N \): total nodes 
+- \( d \): damping factor (≈ 0.85) 
+- \( M(i) \): nodes linking to \( i \) 
+- \( L(j) \): outlinks from node \( j \)
+
+</details>
+
+
 <details class="plotly-details-png" open>
   <summary>Network Centrality by Role (PageRank Distribution)</summary>
   <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/pagerank_by_role.png" alt="pagerank_by_role" width="80%">
@@ -901,7 +923,17 @@ Finally, we look at how asymmetric relationships evolve between 2014 and 2017: d
 
 ### Conclusion
 
+Reddit has a reputation for being loud, chaotic, and perpetually angry. And yes—there is plenty of negativity. But when we zoom out, what we find is not a constant shouting match. It’s something far more organized.
 
+Asymmetry is the rule, not the exception. Most communities talk about others far more than they talk with them. Most interactions are one-sided, usually positive, and surprisingly calm. When negativity does appear, it’s rarely a two-sided brawl. More often, it’s one subreddit throwing a punch while the other keeps scrolling.
+
+A small cast of familiar characters shows up again and again: reliable critics who never miss an opportunity to comment, highly visible hubs that absorb attention whether they want it or not, and a rotating middle group that flares up whenever the news cycle demands it. These roles persist over time, even as Reddit itself grows larger and busier—suggesting that some communities are not having bad days so much as being who they are.
+
+Even the language gives the game away. One-sided attacks are more emotional, more expressive, and less interested in explaining themselves. Mutual hostility, when it happens, sounds more like an argument than an outburst—less **“drive-by insult,”** more **“lengthy comment thread.”**
+
+So if Reddit sometimes feels hostile, it’s not because everyone is fighting everyone all the time. It’s because attention is uneven, visibility attracts criticism, and some communities are simply very good at yelling into the void—while others have learned to live there.
+
+<div style="background-color:#F3F8F4; padding:12px 16px; border-radius:6px; margin:1em 0;">📌In short: Reddit isn’t pure chaos. It’s structured chaos. And once you see the pattern, you can’t unsee it.</div>
 
 
 
