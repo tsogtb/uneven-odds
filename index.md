@@ -828,11 +828,20 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 ### Hierarchy: Who shapes the landscape?
 
+First let’s take a look at how the number of subreddits acting as attackers, receivers, or balanced changed over time.
+
+<details class="plotly-details-png" open>
+  <summary>Number of Attackers/Receivers over Time</summary>
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
+  </div>
+</details>
+
 Beyond roles, some communities are structurally central in the network: they receive links from many other subreddits and have high PageRank or in-degree. When we cross roles with centrality, we can see: whether receivers tend to be big, whether attackers are more peripheral communities, whether peaceful communities play a central role in information flow.
 
 <details class="plotly-details-png" open>
   <summary>Network Centrality by Role (PageRank Distribution)</summary>
-  <img src="{{ site.baseurl }}/assets/plots/pagerank_by_role.png" alt="pagerank_by_role" width="80%">
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/pagerank_by_role.png" alt="pagerank_by_role" width="80%">
+  </div>
 </details>
 
 
@@ -841,7 +850,8 @@ Finally, we look at how asymmetric relationships evolve between 2014 and 2017: d
 
 <details class="plotly-details-png" open>
   <summary>Number of Hyperlinks over Time(Monthly) & Percentage of Negative Links over Time(Monthly)</summary>
-  <img src="{{ site.baseurl }}/assets/plots/temporal_statistics_network_growth.png" alt="temporal_statistics_network_growth" width="80%">
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/temporal_statistics_network_growth.png" alt="temporal_statistics_network_growth" width="80%">
+  </div>
 </details>
 
 
