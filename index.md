@@ -796,18 +796,18 @@ We now turn to the language patterns associated with **hostile interactions**, f
 </details>
 
 
-Beyond the expected emotional markers, a striking result is the strong influence of **non-LIWC features**. Measures such as readability, message length, sentence complexity, and character-level statistics consistently rank among the most important signals. This suggests that hostile interactions are not only emotionally charged, but also **structurally different**: they tend to be longer, denser, and more carefully constructed, resembling arguments or justifications rather than spontaneous reactions. In other words, hostility here often comes with effort—users take time to explain, argue, and insist.
+Beyond the expected emotional markers, a striking result is the strong influence of **non-LIWC features**. Measures such as readability, message length, sentence complexity, and character-level statistics consistently rank among the most important signals. This suggests that hostile interactions are not only emotionally charged, but also **structurally different**: they tend to be longer, denser, and more carefully constructed, resembling arguments or justifications rather than spontaneous reactions. In other words, **hostility here often comes with effort—users take time to explain, argue, and insist.**
 
 Within the LIWC categories, some dimensions stand out more than others. **Cognitive process features**(such as CogMech) play a notable role, indicating language focused on reasoning, causation, and explanation (“because”, “should”, “know”). This aligns with the idea that negative or conflictual exchanges frequently involve attempts to rationalize a position or challenge another one. At the same time, the presence of anger-related features is expected in hostile interactions, but what stands out is how strongly they contribute when combined with other signals. Rather than appearing in isolation, they come together with structural and cognitive markers, amplifying their impact. This suggests that hostile links are not simply driven by emotional reactions, but by messages where negative emotion is embedded in more deliberate, structured, and cognitively engaged discourse, reinforcing the overall intensity of the interaction.
 
 
-### One-sided vs. mutual hostilities
+### One-sided vs. Mutual Hostilities
 To better understand how hostility operates, we move beyond simply identifying negative interactions and compare two distinct situations: **one-sided negative attacks and mutual negative exchanges.**
 
 The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
 
 <details class="plotly-details-png" open>
-  <summary>LIWC Differences One-sided vs. Mutual Negative</summary>
+  <summary>LIWC Differences: One-sided (neg) vs. Mutual Negative</summary>
   <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="100%">
 </details>
 
