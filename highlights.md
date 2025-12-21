@@ -43,3 +43,27 @@ permalink: /highlights/
     <li><a href="https://www.reddit.com/r/india/comments/66mu0l/1901_pic_of_rani_lakshmi_bai/dgjtm55/" target="_blank">r/india: 1901 Pic of Rani Lakshmi Bai</a></li>
   </ul>
 </details>
+
+<details>
+  <summary><b>r/conspiracy & r/worldnews</b></summary>
+  <ul>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/1v35hu/indias_fake_polio_philanthropy/" target="_blank">conspiracy: India's fake polio philanthropy</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/28itx8/eyewitnesses_testify_pope_francis_raped_and/" target="_blank">conspiracy: Eyewitnesses testify against Pope Francis</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/2adubi/rworldnews_is_at_it_again_mods_quietly_remove_a/" target="_blank">conspiracy: r/worldnews mods remove thread</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/2xsz7y/blatantly_misleading_antirussian_circle_jerk_on/" target="_blank">conspiracy: Misleading anti-Russian sentiment</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/327561/so_isis_aparently_killed_10_doctors_for_refusing/" target="_blank">conspiracy: ISIS kills doctors</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/3e6kjk/israel_declares_rock_throwing_as_terrorism_kids/" target="_blank">conspiracy: Rock throwing declared terrorism</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/44h6vu/total_blackout_rnews_rworldnews_and_reurope/" target="_blank">conspiracy: Total blackout on r/news and r/worldnews</a></li>
+    <li><a href="https://www.reddit.com/r/conspiracy/comments/4bi12u/brussels_attack_discussion_thread/" target="_blank">conspiracy: Brussels attack discussion</a></li>
+    <li><a href="http://www.reddit.com/r/worldnews/comments/20a1y9/xpost_from_recursiverevolt_how_the_nsa_plans_to/" target="_blank">worldnews: How the NSA plans to infect millions</a></li>
+    <li><a href="http://np.reddit.com/r/worldnews/comments/21ia5a/turkey_bans_youtube/cgdu1fa" target="_blank">worldnews: Turkey bans YouTube discussion</a></li>
+    <li><a href="http://www.reddit.com/r/worldnews/comments/2eknjm/what_hamas_does_to_palestinian_moderates/ck0em1p" target="_blank">worldnews: Hamas and Palestinian moderates</a></li>
+    <li><a href="http://np.reddit.com/r/worldnews/comments/2qrqev/iran_supreme_leader_uses_twitter_to_blast_us_and/cn8vzzc" target="_blank">worldnews: Iran Supreme Leader on Twitter</a></li>
+    <li><a href="https://np.reddit.com/r/worldnews/comments/33rsdi/an_archaeologist_has_discovered_liquid_mercury_at/" target="_blank">worldnews: Liquid mercury discovered by archaeologist</a></li>
+    <li><a href="https://np.reddit.com/r/worldnews/comments/3wlrni/antivaxxer_parent_lies_to_hospital_about/" target="_blank">worldnews: Antivaxxer parent lies to hospital</a></li>
+    <li><a href="http://np.reddit.com/r/worldnews/comments/43vf5n/nasa_hack_anonsec_attempts_to_crash_222m_drone/czma4jr?context=3" target="_blank">worldnews: NASA hack and drone attempt</a></li>
+    <li><a href="https://np.reddit.com/r/worldnews/comments/4diukt/panama_papers_wikileaks_calls_for_data_leak_to_be/d1rebo6" target="_blank">worldnews: Wikileaks calls for Panama Papers leak</a></li>
+    <li><a href="https://www.reddit.com/r/worldnews/comments/4glc1n/uk_labour_mp_naz_shah_claimed_israeli_jews_should/" target="_blank">worldnews: UK Labour MP Israeli Jews comments</a></li>
+    <li><a href="https://www.reddit.com/r/worldnews/comments/63tlc7/farms_could_slash_pesticide_use_without_losses/" target="_blank">worldnews: Farms could slash pesticide use</a></li>
+  </ul>
+</details>

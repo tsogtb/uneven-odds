@@ -12,7 +12,7 @@ export class Camera {
     this.projection = mat4.create()
     this.view = mat4.create()
 
-    this.position = vec3.fromValues(0, 0, 5)
+    this.position = vec3.fromValues(0, 0, 8)
     this.up = vec3.fromValues(0, 1, 0)
     this.front = vec3.fromValues(0, 0, -1)
     this.right = vec3.fromValues(1, 0, 0)

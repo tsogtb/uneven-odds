@@ -13,7 +13,7 @@ permalink: /features/
 {:toc}
 
 <!--toc-->
-The following list details the networks and <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For selected LIWC attributes, hyperlinks are provided to surviving Reddit posts that demonstrate the highest scoring instances for each category.
+The following list details the networks and <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For some LIWC attributes, hyperlinks are provided to surviving Reddit posts that demonstrate the highest scoring instances for each of them.
 
 ### Network
 - Source subreddit
@@ -63,11 +63,11 @@ The following list details the networks and <a href="https://www.liwc.app/help/h
 - LIWC_Body
 - LIWC_Health
 - <a href="https://www.reddit.com/r/thewalkingdead/comments/4a1hsf/ricks_transformation_s1_s6/" target="_blank" rel="noopener noreferrer">LIWC_Sexual</a> = 0.625
-- LIWC_Ingest
+- <a href="https://www.reddit.com/r/lifehacks/comments/3cvzy7/saw_a_neat_little_tip_for_drinking_more_water/cszhqf9" target="_blank" rel="noopener noreferrer">LIWC_Ingest</a> = 0.333
 
 ### Relativity & Space-Time
 - LIWC_Relativ
-- LIWC_Motion
+- <a href="https://www.reddit.com/r/science/comments/5u06px/honeybees_let_out_a_whoop_when_they_bump_into/" target="_blank" rel="noopener noreferrer">LIWC_Motion</a> = 0.250
 - LIWC_Space
 - <a href="https://www.reddit.com/r/copypasta/comments/32uslh/fifth_world_problems/" target="_blank" rel="noopener noreferrer">LIWC_Time</a> = 0.611
 

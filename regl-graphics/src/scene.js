@@ -27,7 +27,7 @@ export function createStarData(regl, {
 
       positions[i * 3 + 0] = 0 + r * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = 0 + r * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = 5 + r * Math.cos(phi);
+      positions[i * 3 + 2] = 8 + r * Math.cos(phi);
 
       const baseColor = palette[Math.floor(Math.random() * palette.length)];
       const brightness = 0.4 + Math.random() * 0.6;
