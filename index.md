@@ -29,10 +29,29 @@ animate-cover: true
 
 If Reddit communities were people at a party, some would spend the whole evening debating loudly, others would quietly observe from the corner, and a few would spend their time gossiping about groups who barely even know they exist.
 Online platforms are usually described through trends, viral posts, or influential users but we rarely step back and look at how entire communities talk about one another, how they form alliances, rivalries, or silent tensions across the platform.
+
 Yet, behind Reddit’s chaotic surface lies a vast web of interactions: every time a subreddit links to another, it expresses something, approval, criticism, curiosity, or sometimes hostility. These signals accumulate into patterns far richer than what can be seen from individual posts.
 
-What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
-What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time? Could Reddit’s community dynamics resemble those of our real-world society?
+<div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/reddit_network.jpeg" alt="temporal_statistics_network_growth" width="80%">
+</div>
+
+<!-- What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
+What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time? Could Reddit’s community dynamics resemble those of our real-world society? -->
+
+<div class="dialogue">
+  <div class="bubble">
+    What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
+  </div>
+
+  <div class="bubble">
+    What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time?
+  </div>
+
+  <div class="bubble">
+    Could Reddit’s community dynamics resemble those of our real-world society?
+  </div>
+</div>
+
 
 By analyzing millions of directed links enriched with sentiment, we can finally explore these hidden dynamics: which groups attract admiration, which spark conflicts, which act as hubs of attention, and which are talked about far more than they ever reply.
 
@@ -828,11 +847,9 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 ### Hierarchy: Who shapes the landscape?
 
-First let’s take a look at how the number of subreddits acting as attackers, receivers, or balanced changed over time.
-
 <details class="plotly-details-png" open>
-  <summary>Number of Attackers/Receivers over Time</summary>
-  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
+  <summary>Number of Hyperlinks over Time(Monthly) & Percentage of Negative Links over Time(Monthly)</summary>
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/temporal_statistics_network_growth.png" alt="temporal_statistics_network_growth" width="80%">
   </div>
 </details>
 
@@ -849,10 +866,11 @@ Beyond roles, some communities are structurally central in the network: they rec
 Finally, we look at how asymmetric relationships evolve between 2014 and 2017: does the number of one-sided hostilities increase or decrease? do certain subreddits keep the same role over years, or do they switch from peaceful to attacker, from receiver to mutual hostile?
 
 <details class="plotly-details-png" open>
-  <summary>Number of Hyperlinks over Time(Monthly) & Percentage of Negative Links over Time(Monthly)</summary>
-  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/temporal_statistics_network_growth.png" alt="temporal_statistics_network_growth" width="80%">
+  <summary>Number of Attackers/Receivers over Time</summary>
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
   </div>
 </details>
+
 
 
 <script>
