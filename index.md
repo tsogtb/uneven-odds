@@ -729,7 +729,8 @@ At the same time, being structurally balanced does not guarantee symmetry: some 
 </details>
 
 
-A quick takeaway from this figure is that structural skew and sentiment asymmetry only weakly align.
+A quick takeaway from this figure is that **structural skew and sentiment asymmetry only weakly align**.
+
 Most subreddits cluster near zero appearances in top asymmetric pairs, regardless of whether they send or receive more links. A few extreme broadcasters (large negative skew, like <span style="color: #4C72B0; font-weight: 600;">r/subredditdrama</span> or <span style="color: #4C72B0; font-weight: 600;">r/bestof</span>) do appear repeatedly in asymmetric relationships, suggesting that heavy outward activity can amplify sentiment imbalances—but this is not systematic. On the other side, highly visible subreddits with strong incoming attention (positive skew, like <span style="color: #4C72B0; font-weight: 600;">r/worldnews</span> or <span style="color: #4C72B0; font-weight: 600;">r/politics</span>) also appear in asymmetric pairs, yet no clear threshold of prominence guarantees involvement.
 
 <div style="background-color:#F3F8F4; padding:12px 16px; border-radius:6px; margin:1em 0;">
