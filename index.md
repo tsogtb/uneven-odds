@@ -120,8 +120,8 @@ Together, they offer an early glimpse into Reddit’s internal dynamics, where s
 
 
 <div style="background-color:#f6f8fa; padding:12px 16px; border-radius:6px; margin:1em 0;">
-<strong>🔍 Structure tells us where attention flows—but what about how it feels?</strong>
-To answer that, we turn from interaction asymmetry to sentiment asymmetry.</br>
+<strong>🔍 Structure tells us where attention flows—but what about how it feels?<br>
+To answer that, we turn from interaction asymmetry to sentiment asymmetry.<br>
 Understanding this shift hinges on a single metric: the asymmetry score. Here’s how it is computed.
 </div>
 
@@ -229,13 +229,19 @@ With this score in hand, we can now identify which subreddit pairs stand out as 
 </details>
 
 
-To understand what these asymmetric relationships actually look like, we break them down using a few key features. **`sentiment_A_to_B`** and **`sentiment_B_to_A`** tell us whether references between two communities lean positive or negative. We tend to compare the two values.  And **`count_A_to_B`** and **`count_B_to_A`** show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
-Looking through the strongest pairs, several examples stand out. <span style="color: #4C72B0; font-weight: 600;">r/India → r/subredditdrama</span> appears almost one-sidedly positive: India sends consistently positive references, yet <span style="color: #4C72B0; font-weight: 600;">r/subredditdrama</span> responds with a much larger volume of mentions whose average sentiment sits around **0.4**. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit.
+
+To make sense of what these asymmetric relationships look like in practice, we break each subreddit pair down into a small set of key features. The measures **`sentiment_A_to_B`** and **`sentiment_B_to_A`** capture whether references between two communities tend to be positive or negative, allowing us to compare the tone flowing in each direction. The corresponding **`count_A_to_B`** and **`count_B_to_A`** record how frequently the two sides mention one another—an essential check for separating meaningful patterns from mere coincidences. Finally, the asymmetry score brings these elements together, summarizing how much more strongly one side speaks compared to the other.
+
+Among the most asymmetric pairs, several examples stand out. The relationship between <span style="color: #4C72B0; font-weight: 600;">r/India → r/subredditdrama</span> is strikingly one-sided. References from <span style="color: #4C72B0; font-weight: 600;">r/India</span> are consistently positive, while <span style="color: #4C72B0; font-weight: 600;">r/subredditdrama</span> responds with a much larger volume of mentions whose average sentiment hovers around 0.4. This pattern may suggest that r/India often becomes a subject of criticism, or social commentary.
 
 
-Another telling case is <span style="color: #4C72B0; font-weight: 600;">r/the_donald → r/worldnews</span>. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
-A third example, <span style="color: #4C72B0; font-weight: 600;">r/feminism → r/mensrights</span>, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
-Together, these pairs illustrate why asymmetry matters: it is not just about who talks more, but about the cultural, political, and social frictions that shape how communities choose their targets, and how loudly they decide to speak.
+
+
+Another revealing case is <span style="color: #4C72B0; font-weight: 600;">r/the_donald → r/worldnews</span>. Why would a partisan political community focus so intensely on a mainstream news forum? The answer lies in timing and context. The dataset spans the 2016 U.S. presidential election, a moment when political tensions spilled across the entire platform. During such periods, politically aligned communities often closely monitor—and challenge—mainstream news coverage, particularly when it concerns polarizing figures like Donald Trump. This dynamic naturally produces an imbalance, with sentiment flowing disproportionately in one direction.
+
+A different kind of question emerges in the pair <span style="color: #4C72B0; font-weight: 600;">r/feminism → r/mensrights</span>. How does sentiment move between two communities built around opposing social movements? Here, <span style="color: #4C72B0; font-weight: 600;">r/feminism</span> tends to reference <span style="color: #4C72B0; font-weight: 600;">r/mensrights</span> in a relatively neutral or even positive tone, while the reverse direction more often carries negative sentiment. This asymmetry reflects broader, long-standing debates between the two movements, where engagement frequently takes the form of critique or rebuttal—but not always with equal intensity on both sides.
+
+What do these cases tell us more broadly? They show that asymmetry is not just about who interacts with whom, but about why those interactions take the shape they do. Sentiment asymmetries expose the political, cultural, and social frictions that guide attention across Reddit—revealing which communities feel compelled to respond, which become recurring reference points, and where conflict concentrates within the platform.
 
 
 <div style="max-height: 400px; overflow: auto; border: 2px solid #eee; padding: 8px;">
