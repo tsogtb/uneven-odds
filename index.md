@@ -767,7 +767,8 @@ We now turn to the language patterns associated with **hostile interactions**, f
 
 <details class="plotly-details-png" open>
   <summary>Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
-  <img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
+  </div>
 </details>
 
 
