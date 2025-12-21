@@ -38,19 +38,14 @@ Yet, behind Reddit’s chaotic surface lies a vast web of interactions: every ti
 <!-- What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
 What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time? Could Reddit’s community dynamics resemble those of our real-world society? -->
 
-<!-- <div class="dialogue">
-  <div class="bubble">
-    What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
-  </div>
+<div class="bubble">
+  What if we could uncover not just who speaks, but who speaks about whom, and in what tone?<br>
 
-  <div class="bubble">
-    What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time?
-  </div>
+  What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time?<br>
+  
+  Could Reddit’s community dynamics resemble those of our real-world society?
+</div>
 
-  <div class="bubble">
-    Could Reddit’s community dynamics resemble those of our real-world society?
-  </div>
-</div> -->
 
 <blockquote>
   What if we could uncover not just who speaks, but who speaks about whom, and in what tone?<br><br>
