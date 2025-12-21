@@ -59,31 +59,6 @@ This is where the best data analysts of the universe [we]({{ "/about/" | relativ
 If you’re curious about the dataset behind our analysis, here’s what makes it special. We used the Reddit Hyperlink Network dataset, which collects cross-subreddit mentions recorded between 2014 and 2017. Every time a post in one subreddit links to another, it produces a directional connection with a timestamp and a sentiment label indicating whether the interaction was positive or negative. In addition, each link carries linguistic information drawn from the text of the post, giving insight into tone, emotion, and expression… but we’ll come back to these features later on for a deeper explanation. 
 Taken together, these elements allow us to view Reddit not as isolated forums, but as a dynamic network of relationships in which communities mention, respond to, or overlook one another. By analyzing this web of interactions, we can explore how groups engage across topics and over time, offering a richer understanding of social behavior on the platform.
 
-Here are the key numbers that shape our dataset.
-
-**[enter numbers]**
-<div style="text-align: center; margin: 20px 0;">
-  <table style="margin: 0 auto;">
-    <tr>
-      <th align="center">Keys</th>
-      <th align="center">Numbers</th>
-    </tr>
-    <tr>
-      <td align="center">Total Subreddits</td>
-      <td>858,488</td>
-    </tr>
-    <tr>
-      <td align="center">Unique Pairs</td>
-      <td>309,667</td>
-    </tr>
-    <!-- <tr>
-      <td align="center">Asymmetric Pairs</td>
-      <td>6,508</td>
-    </tr> -->
-  </table>
-</div>
-
-
 
 Before examining the structure of interactions on Reddit, it helps to start with a high-level view of sentiment across all shared hyperlinks. Only around 10% of cross-subreddit mentions express negative sentiment, while the overwhelming majority are neutral or positive. At first glance, this suggests a largely calm and constructive environment—but as the analysis unfolds, it becomes clear that the dynamics beneath the surface are far more nuanced.
 
@@ -877,7 +852,9 @@ National subreddits offer a natural entry point because they are built around sh
 The ratio plot makes this imbalance explicit. Some communities direct a disproportionately large share of negativity outward compared to how much they absorb, while others accumulate negative attention without responding in kind. This asymmetry suggests that country subreddits do not simply **“trade”** hostility with the rest of Reddit.
 
 
-### Hierarchy: Who shapes the landscape?
+### Temporal Roles in the Network
+
+Reddit’s cross-subreddit activity grows steadily over time, while the overall level of negative sentiment remains largely stable, with only small oscillations. 
 
 <details class="plotly-details-png" open>
   <summary>Number of Hyperlinks over Time(Monthly) & Percentage of Negative Links over Time(Monthly)</summary>
@@ -885,7 +862,23 @@ The ratio plot makes this imbalance explicit. Some communities direct a dispropo
   </div>
 </details>
 
-Beyond roles, some communities are structurally central in the network: they receive links from many other subreddits and have high PageRank or in-degree. When we cross roles with centrality, we can see: whether receivers tend to be big, whether attackers are more peripheral communities, whether peaceful communities play a central role in information flow.
+<details class="plotly-details-png" open>
+  <summary>Number of Attackers/Receivers over Time</summary>
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
+  </div>
+</details>
+
+However, roles change inside the community. To move beyond static snapshots, we classified each subreddit month by month as an **attacker**, a **receiver**, or **balanced**—depending on whether it sent more negative links than it received, absorbed more than it sent, or remained roughly even.
+This temporal perspective invites a natural question: **are these roles temporary reactions, or do some communities consistently play the same part?**
+
+The results point to clear patterns. A small group of subreddits emerges as persistent attackers, most notably **r/subredditdrama** and **r/drama**, which act as sources of negative links in a large majority of observed months. Their behavior is strikingly stable over time, suggesting a structural role centered on commentary and critique rather than episodic conflict.
+
+On the receiving end, communities such as **r/news**, **r/worldnews**, **r/videos**, **r/funny**, and **r/shitpost** appear repeatedly as persistent receivers, accumulating negative attention across most periods while rarely initiating it themselves. These are highly visible content hubs—places that attract scrutiny simply by virtue of being widely referenced.
+
+Between these two extremes lies a more volatile group, including **r/pics**, **r/circlebroke**, **r/conspiracy**, and **r/politics**. These subreddits frequently shift roles from month to month, alternating between attacking, receiving, and balanced states as external events reshape discussion. Their behavior reflects a more context-dependent dynamic, where polarity intensifies or fades in response to news cycles, political developments, or platform-wide debates.
+
+
+### Who Sits at the Center? Network Centrality by Role
 
 <details class="plotly-details-png" open>
   <summary>Network Centrality by Role (PageRank Distribution)</summary>
@@ -894,14 +887,9 @@ Beyond roles, some communities are structurally central in the network: they rec
 </details>
 
 
-### Do asymmetries and link sentiment tend to change over time?
-Finally, we look at how asymmetric relationships evolve between 2014 and 2017: does the number of one-sided hostilities increase or decrease? do certain subreddits keep the same role over years, or do they switch from peaceful to attacker, from receiver to mutual hostile?
+<!-- ### Do asymmetries and link sentiment tend to change over time?
+Finally, we look at how asymmetric relationships evolve between 2014 and 2017: does the number of one-sided hostilities increase or decrease? do certain subreddits keep the same role over years, or do they switch from peaceful to attacker, from receiver to mutual hostile? -->
 
-<details class="plotly-details-png" open>
-  <summary>Number of Attackers/Receivers over Time</summary>
-  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
-  </div>
-</details>
 
 ### Conclusion
 
