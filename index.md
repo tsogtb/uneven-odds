@@ -838,7 +838,7 @@ Beyond the expected emotional markers, a striking result is the strong influence
 Within the LIWC categories, some dimensions stand out more than others. **Cognitive process features**(such as CogMech) play a notable role, indicating language focused on reasoning, causation, and explanation (“because”, “should”, “know”). This aligns with the idea that negative or conflictual exchanges frequently involve attempts to rationalize a position or challenge another one. At the same time, the presence of anger-related features is expected in hostile interactions, but what stands out is how strongly they contribute when combined with other signals. Rather than appearing in isolation, they come together with structural and cognitive markers, amplifying their impact. This suggests that hostile links are not simply driven by emotional reactions, but by messages where negative emotion is embedded in more deliberate, structured, and cognitively engaged discourse, reinforcing the overall intensity of the interaction.
 
 
-### One-sided vs mutual hostilities
+### One-sided vs. mutual hostilities
 To better understand how hostility operates, we move beyond simply identifying negative interactions and compare two distinct situations: **one-sided negative attacks and mutual negative exchanges.**
 
 The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
@@ -852,6 +852,16 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 
 ### Who are the Attackers, the Receivers, and the Peaceful ones?
+
+If asymmetry shapes how communities relate to one another, a natural question follows: **who is doing the attacking, who bears the brunt of it, and who manages to stay out of the fray altogether?** In this section, we shift focus from relationships to roles, separating negative sentiment sent from negative sentiment received. By looking at where hostility originates and where it concentrates, we begin to see how different communities position themselves within Reddit’s landscape of conflict—and how unevenly that conflict is experienced across the platform.
+
+### The Geography of Online Hostility
+
+<div style="background-color:#f6f8fa; padding:12px 16px; border-radius:6px; margin:1em 0;">
+<strong>Why start with countries?</strong><br>
+National subreddits offer a natural entry point because they are built around shared identity and a strong sense of belonging. Discussions in these spaces often blend news, culture, and politics, making them especially likely to attract emotionally charged reactions—both from insiders and from outsiders. As collective symbols rather than niche interests, country-based communities are also more visible and more frequently referenced across Reddit, which makes them useful lenses for observing how sentiment, criticism, and affiliation travel through the platform.
+</div>
+
 
 <details class="plotly-details-png" open>
   <summary>Top 10 Country Subreddits by Negative Incoming vs. Outgoing Posts</summary>
