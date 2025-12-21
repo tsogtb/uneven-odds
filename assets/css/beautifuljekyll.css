@@ -1426,3 +1426,20 @@ pre {
 .plotly-details-png summary:hover::before {
   color: #000;
 }
+
+
+
+
+/* for the bubbles */
+.dialogue {
+  margin: 24px 0;
+}
+
+.bubble {
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border-radius: 10px;
+  line-height: 1.6;
+}
