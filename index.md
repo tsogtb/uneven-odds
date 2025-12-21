@@ -799,6 +799,9 @@ The figure below provides an overview of these relationship types by categorizin
 	<div class="plotly-holder"></div>
 </details>
 
+The figure summarizes the distribution of relationship types obtained from our pairwise classification procedure. Each subreddit pair is assigned to a category based on **(i) the direction and polarity of average sentiment in each direction** and **(ii) whether link activity is effectively one-sided**, defined by a dominance threshold on directional mention counts.
+
+The bar chart shows the absolute number of pairs in each relationship category (on a logarithmic scale), while the accompanying pie chart presents the same breakdown as percentages. Together, these visualizations provide a compact overview of how asymmetric and mutual sentiment relationships are distributed across the Reddit network under this taxonomy.
 
 
 ### Do One-Sided Attacks “sound” different?
@@ -807,7 +810,8 @@ The figure below provides an overview of these relationship types by categorizin
 
 After identifying asymmetric relationships, we now focus on one-sided attacks and ask whether they carry a distinctive linguistic signature. Rather than looking at sentiment alone, we examine how language itself changes when hostility flows mostly in one direction. The idea is simple: if one-sided attacks are a specific interaction pattern, they should also sound different in the way they are written.
 
-Looking at which textual features matter most for distinguishing relationship types already provides useful insight. Some patterns consistently appear in one-sided attacks, suggesting that these interactions follow recognizable linguistic dynamics rather than occurring at random. This highlights that asymmetry is not only a structural phenomenon, but is also reflected in the way interactions are expressed—an aspect we will examine more closely in the next section.
+As a first step, we examine which textual features are most informative for distinguishing between **ALL** relationship types. Using a random forest classifier, we estimate feature importance to identify which aspects of language contribute most to separating different kinds of inter-subreddit relationships. This view offers an intuitive way to see which linguistic signals—ranging from sentiment cues to stylistic markers—help differentiate the various forms of hostility, neutrality, and positivity observed across communities.
+
 
 <details class="plotly-details-png" open>
   <summary>Top 20 Most Features for Classifying Relationship Types</summary>
