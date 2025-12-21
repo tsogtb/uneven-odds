@@ -13,7 +13,7 @@ permalink: /features/
 {:toc}
 
 <!--toc-->
-The following list details the networks and <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For some LIWC attributes, hyperlinks are provided to surviving Reddit posts that demonstrate the highest scoring instances for each of them.
+The following list details the network and <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For some LIWC attributes, hyperlinks are provided to surviving Reddit posts that demonstrate the highest scoring instances for each of them.
 
 ### Network
 - Source subreddit
