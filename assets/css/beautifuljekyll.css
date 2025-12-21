@@ -1392,3 +1392,37 @@ pre {
   padding-left: 1rem;
   border-left: 2px solid #eee;
 }
+
+
+
+
+.plotly-details-png summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  list-style: none;
+}
+
+.plotly-details-png summary:hover,
+.plotly-details-png summary:focus-visible {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ED001C;
+}
+
+.plotly-details-png summary::-webkit-details-marker {
+  display: none;
+}
+
+.plotly-details-png summary::before {
+  content: "▸";
+  color: #ED001C;
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.plotly-details-png[open] summary::before {
+  transform: rotate(90deg);
+}

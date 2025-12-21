@@ -181,8 +181,8 @@ With this score in hand, we can now identify which subreddit pairs stand out as 
 **[the plot]**
 
 <details>
-  <summary>Top 20 Most Asymmetric Subreddit Pairs</summary>
-  <img src="{{ site.baseurl }}/assets/plots/top20_most_asymmetric_subreddit_pairs.png" alt="top20_most_asymmetric_subreddit_pairs" width="400">
+  <summary class="plotly-details-png">Top 20 Most Asymmetric Subreddit Pairs</summary>
+  <img src="{{ site.baseurl }}/assets/plots/top20_most_asymmetric_subreddit_pairs.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
 </details>
 
 
@@ -791,8 +791,8 @@ We now turn to the language patterns associated with **hostile interactions**, f
 
 **[the plot]**
 <details>
-  <summary>Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
-  <img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="400">
+  <summary class="plotly-details-png">Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
+  <img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
 </details>
 
 
@@ -808,8 +808,8 @@ The goal is to see whether these two forms of conflict rely on the same linguist
 
 **[the plot]**
 <details>
-  <summary>LIWC Differences One-sided vs. Mutual Negative</summary>
-  <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="400">
+  <summary class="plotly-details-png">LIWC Differences One-sided vs. Mutual Negative</summary>
+  <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="70%">
 </details>
 
 Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit **higher levels** of **negative affect** and **broader emotional load**, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting **more constrained** or **reactive forms of negativity**. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
@@ -820,20 +820,20 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 **[the plot]**
 
 <details>
-  <summary>Top 10 Country Subreddits by Negative Incoming Posts</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_incoming_outgoing.png" alt="negative_country_incoming_outgoing" width="400">
+  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Incoming Posts</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_incoming_outgoing.png" alt="negative_country_incoming_outgoing" width="70%">
 </details>
 
 
 <details>
-  <summary>Top 10 Country Subreddits by Negative Outgoing Posts</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_over_in_ratio.png" alt="negative_country_out_over_in_ratio" width="400">
+  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Outgoing Posts</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_over_in_ratio.png" alt="negative_country_out_over_in_ratio" width="70%">
 </details>
 
 
 <details>
-  <summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="400">
+  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="70%">
 </details>
 
 
