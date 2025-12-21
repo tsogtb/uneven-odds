@@ -61,7 +61,8 @@ Before diving deeper into the structure of Reddit’s interactions, let’s star
 
 Before diving into the nuances of sentiment and motivation, we start by mapping how unevenly subreddits interact with one another. Some communities attract enormous attention, whether admiration, mockery, or criticism, while barely replying at all, whereas others send out thousands of links without receiving much back. By examining these imbalances in incoming vs. outgoing mentions, we can uncover which subreddits become frequent targets, which ones act as loud broadcasters, and how these asymmetries lay the groundwork for the deeper relational patterns we analyze next.
 
-A first look: who talks much more than they listen?
+### A First Look:  
+***Who talks much more than they listen—and what does that reveal?***
 
 <details class="plotly-details" data-src="{{ '/assets/plots/subreddit_most_asymmetric_in_outgoing_links.html' | relative_url }}">
 	<summary>Subreddits with Most Asymmetric Incoming vs Outgoing Links</summary>
@@ -70,11 +71,13 @@ A first look: who talks much more than they listen?
 
 When we compare how often communities mention others versus how often they are mentioned themselves, striking patterns emerge. 
 
-Already, one pattern stands out: AskReddit receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is subredditdrama, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
+Already, one pattern stands out: ***AskReddit*** receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is ***subredditdrama***, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
 
 Even before diving deeper, we can already see the contrast between hubs of curiosity and hubs of commentary. These contrasts reveal early hints of Reddit’s internal dynamics, where some communities become magnets for discussion while others act as active commentators on the rest of the ecosystem. 
 
-But before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.
+
+> 🧠 **But before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.**  
+
 
 ### Pairwise Sentiment and Asymmetry Computation
 
@@ -83,8 +86,14 @@ Each Reddit post linking from a source subreddit to a target subreddit is treate
 
 For every unordered pair of subreddits {A, B}, we compute sentiment statistics in both directions:
 
-- A → B: mean sentiment of all links from A to B  
-- B → A: mean sentiment of all links from B to A  
+<!-- - A → B: mean sentiment of all links from A to B  
+- B → A: mean sentiment of all links from B to A   -->
+
+| Direction | Definition |
+|----------|------------|
+| A → B | sentiment of all links from A to B |
+| B → A | sentiment of all links from B to A |
+
 
 Let the sentiment of the i-th link from A to B be denoted by  
 
@@ -147,15 +156,17 @@ $$
 
 This score is positive when A is more positive toward B than B is toward A, negative in the opposite case, and increases in magnitude as asymmetry becomes stronger and better supported by data. Pairs with insufficient observations in either direction are excluded to avoid unstable estimates.
 
-Who are the most asymmetric pairs? 
+***Who talks much more than they listen—and what does that reveal?***
 
 With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
 
 **[the plot]**
 
-To understand what these asymmetric relationships actually look like, we break them down using a few key features. Sentiment_A_to_B and sentiment_B_to_A tell us whether references between two communities lean positive or negative. We tend to compare the two values.  Count_A_to_B and count_B_to_A show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
-Looking through the strongest pairs, several examples stand out. India → subredditdrama appears almost one-sidedly positive: India sends consistently positive references, yet subredditdrama responds with a much larger volume of mentions whose average sentiment sits around 0.4. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit. (voir si subredditdrama attaque aussi d’autres subreddits ou seulement India)
+To understand what these asymmetric relationships actually look like, we break them down using a few key features. **`sentiment_A_to_B`** and **`sentiment_B_to_A`** tell us whether references between two communities lean positive or negative. We tend to compare the two values.  And **`count_A_to_B`** and **`count_B_to_A`** show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
+Looking through the strongest pairs, several examples stand out. **`India → subredditdrama`** appears almost one-sidedly positive: India sends consistently positive references, yet subredditdrama responds with a much larger volume of mentions whose average sentiment sits around **0.4**. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit.
+
+
 Another telling case is the_donald → worldnews. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
 A third example, feminism → mensrights, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
 Together, these pairs illustrate why asymmetry matters: it is not just about who talks more, but about the cultural, political, and social frictions that shape how communities choose their targets, and how loudly they decide to speak.
