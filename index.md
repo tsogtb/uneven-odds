@@ -47,13 +47,6 @@ What if we could map Reddit not as a collection of isolated forums, but as a liv
 </div>
 
 
-<blockquote>
-  What if we could uncover not just who speaks, but who speaks about whom, and in what tone?<br><br>
-  What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time?<br><br>
-  Could Reddit’s community dynamics resemble those of our real-world society?
-</blockquote>
-
-
 By analyzing millions of directed links enriched with sentiment, we can finally explore these hidden dynamics: which groups attract admiration, which spark conflicts, which act as hubs of attention, and which are talked about far more than they ever reply.
 
 Reddit is a vast collection of communities, called subreddits, where millions of users gather around topics ranging from news and science to gaming, culture, or niche interests. The visualization above maps this landscape by grouping subreddits according to their themes and audiences: each point is a community, and those with similar content naturally cluster into regions like gaming, Europe, STEM, or Anime. 
@@ -815,6 +808,7 @@ As a first step, we examine which textual features are most informative for dist
 
 Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
 
+These results will help us choose what category of features we actually care about.
 
 **What is LIWC?**
 
