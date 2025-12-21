@@ -1,7 +1,7 @@
 ---
 layout: page
 title: LIWC
-subtitle: Browse Reddit like never before!  
+subtitle: Linguistic Inquiry and Word Count Dictionary
 toc: true
 full-width: true
 permalink: /liwc/
@@ -13,8 +13,7 @@ permalink: /liwc/
 {:toc}
 
 <!--toc-->
-Hyperlinks from the dataset that have the highest possible scores for the corresponding <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attribute and are **still intact** as of 2025, excluding inappropriate content.
-
+The following list details the <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For selected categories, hyperlinks are provided to instances (*still intact*) that showcase the highest possible scoring for that attribute.    
 
 ### Sentiment
 - <a href="https://www.reddit.com/r/startrek/comments/1w6awv/you_guys_gotta_see_the_top_comment_in_this/" target="_blank" rel="noopener noreferrer">Positive sentiment calculated by VADER</a> = 0.753
@@ -24,7 +23,7 @@ Hyperlinks from the dataset that have the highest possible scores for the corres
 ### Social Processes
 - LIWC_Social
 - LIWC_Family
-- <a href="https://www.reddit.com/r/NoStupidQuestions/comments/542v9s/why_do_people_call_their_partners_baby_thats_kind/d7ynqiw?context=2" target="_blank" rel="noopener noreferrer">LIWC_Friends</a> = 0.286
+- LIWC_Friends
 - LIWC_Humans
 
 ### Affective Processes
@@ -60,7 +59,6 @@ Hyperlinks from the dataset that have the highest possible scores for the corres
 - LIWC_Ingest
 
 ### Relativity & Space-Time
-(References to space, time, motion)
 - LIWC_Relativ
 - LIWC_Motion
 - LIWC_Space
@@ -72,7 +70,7 @@ Hyperlinks from the dataset that have the highest possible scores for the corres
 - LIWC_Leisure
 - LIWC_Home
 - LIWC_Money
-- <a href="https://np.reddit.com/r/Christianity/comments/4wd6di/swedish_church_to_use_drones_to_drop_thousands_of/d6692ey" target="_blank" rel="noopener noreferrer">LIWC_Relig</a> = 0.294
+- LIWC_Relig
 - LIWC_Death
 
 ### Spoken Language Markers

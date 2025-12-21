@@ -35,29 +35,32 @@ export function createStarData(regl, {
     }
   } else {
     let offset = 0;
-
     clusters.forEach(cluster => {
-      const { num_stars, center, radius, color } = cluster;
+      const { num_stars, center, color, shape = 'circle' } = cluster;
       
       for (let i = 0; i < num_stars; i++) {
         const idx = (offset + i) * 3;
 
-        const theta = Math.random() * 2.0 * Math.PI;
-        
-        const r = radius * Math.sqrt(Math.random());
-
-        positions[idx + 0] = center.x + r * Math.cos(theta);
-        positions[idx + 1] = center.y + r * Math.sin(theta);
-        positions[idx + 2] = center.z; 
+        if (shape === 'rectangle') {
+          // Rectangle: Uniform distribution in a box
+          const w = cluster.width || 1;
+          const h = cluster.height || 1;
+          positions[idx + 0] = center.x + (Math.random() - 0.5) * w;
+          positions[idx + 1] = center.y + (Math.random() - 0.5) * h;
+          positions[idx + 2] = center.z;
+        } else {
+          // Circle: Uniform distribution in a disk
+          const r = (cluster.radius || 1) * Math.sqrt(Math.random());
+          const theta = Math.random() * 2.0 * Math.PI;
+          positions[idx + 0] = center.x + r * Math.cos(theta);
+          positions[idx + 1] = center.y + r * Math.sin(theta);
+          positions[idx + 2] = center.z;
+        }
 
         const baseColor = color || palette[Math.floor(Math.random() * palette.length)];
         const brightness = 0.5 + Math.random() * 0.5;
-
-        colors[idx + 0] = baseColor[0] * brightness;
-        colors[idx + 1] = baseColor[1] * brightness;
-        colors[idx + 2] = baseColor[2] * brightness;
+        colors.set([baseColor[0] * brightness, baseColor[1] * brightness, baseColor[2] * brightness], idx);
       }
-      
       offset += num_stars;
     });
   }

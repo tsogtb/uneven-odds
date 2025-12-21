@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About
-#subtitle: Why you'd want to go on a date with me
 full-width: true
 permalink: /about/
 ---
@@ -20,6 +19,5 @@ This project was carried out as part of the <a href="https://edu.epfl.ch/courseb
 - Sherine Adrou Bakkali
 - Tsogt Baigalmaa
 
-### Image credits
-Home Page Cover & Footer - <a href="https://cdn.esahubble.org/archives/images/wallpaper5/heic0611b.jpg" target="_blank" rel="noopener noreferrer">Hubble Ultra Deep Field</a> - NASA, ESA, and S. Beckwith.<br><br>Thumbnails for the Hyperlinks:
-- <a href="https://upload.wikimedia.org/wikipedia/en/a/a6/Might_Delete_Later.png" target="_blank" rel="noopener noreferrer">Cover for the mixtape Might Delete Later</a> - J. Cole, Dreamville Records, or other artist(s). 
+### Image credit
+Home Page Cover & Footer - <a href="https://cdn.esahubble.org/archives/images/wallpaper5/heic0611b.jpg" target="_blank" rel="noopener noreferrer">Hubble Ultra Deep Field</a> - NASA, ESA, and S. Beckwith.

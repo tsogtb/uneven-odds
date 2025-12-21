@@ -15,19 +15,18 @@ const regl = createREGL({
     }
 })
 
-// UPDATED: Define data stories
 const stories = [
   {
     description: "- Let’s take a quick tour of this miniature universe.",
     generate: () => createStarData(regl, { passive: true })
   },
   {
-    description: "body hyperlink vs. title hyperlinks",
+    description: "Body hyperlink (Red) vs. Title hyperlinks (Blue).",
     generate: () => createStarData(regl, {
       passive: false,
       clusters: [
-        { num_stars: 2865, center: { x: 1.5, y: 0, z: 0 }, radius: 0.7, color: [1.0, 0.2, 0.2] },
-        { num_stars: 5719, center: { x: -1.5, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0] }
+        { num_stars: 2865, center: { x: 1.5, y: 0, z: 0 }, radius: 0.7, color: [1.0, 0.2, 0.2], shape: 'circle' },
+        { num_stars: 5719, center: { x: -1.5, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0], shape: 'circle' }
       ]
     })
   },
@@ -36,16 +35,26 @@ const stories = [
     generate: () => createStarData(regl, { passive: true })
   },
   {
-    description: "Clustered stars representing sample communities.",
+    description: "Connecting two distinct communities with a bridge of shared users.",
     generate: () => createStarData(regl, {
       passive: false,
       clusters: [
-        { num_stars: 2865, center: { x: 1.5, y: 0, z: 0 }, radius: 0.7, color: [1.0, 0.2, 0.2] },
-        { num_stars: 5719, center: { x: -1.5, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0] }
+        // Left Circle
+        { num_stars: 4000, center: { x: -2.5, y: 0, z: 0 }, radius: 1.2, color: [0.2, 0.8, 0.4], shape: 'circle' },
+        // Right Circle
+        { num_stars: 4000, center: { x: 2.5, y: 0, z: 0 }, radius: 1.2, color: [0.8, 0.2, 0.8], shape: 'circle' },
+        // The Bridge (Thin rectangle connecting them)
+        { 
+          num_stars: 1500, 
+          center: { x: 0, y: 0, z: 0 }, 
+          width: 5.0,   // Spans the gap between -2.5 and 2.5
+          height: 0.2,  // Very thin
+          color: [1.0, 1.0, 1.0], 
+          shape: 'rectangle' 
+        }
       ]
     })
   }
-  // Add more stories here
 ];
 
 // UPDATED: Track current story index
@@ -117,3 +126,4 @@ regl.frame(({ time }) => {
 
   render(scene, camera, safeTime)
 })
+
