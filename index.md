@@ -874,6 +874,8 @@ National subreddits offer a natural entry point because they are built around sh
   <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="80%"></div>
 </details>
 
+The ratio plot makes this imbalance explicit. Some communities direct a disproportionately large share of negativity outward compared to how much they absorb, while others accumulate negative attention without responding in kind. This asymmetry suggests that country subreddits do not simply **“trade”** hostility with the rest of Reddit.
+
 
 ### Hierarchy: Who shapes the landscape?
 
@@ -900,6 +902,14 @@ Finally, we look at how asymmetric relationships evolve between 2014 and 2017: d
   <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/role_counts_over_time.png" alt="role_counts_over_time" width="80%">
   </div>
 </details>
+
+### Conclusion
+
+
+
+
+
+
 
 
 
