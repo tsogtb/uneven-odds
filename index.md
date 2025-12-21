@@ -91,7 +91,8 @@ Here are the key numbers that shape our dataset.
 
 
 
-Before diving deeper into the structure of Reddit’s interactions, let’s start with a simple overview of general sentiment across all hyperlinks: only about 10% of cross-subreddit mentions carry a negative tone, while the vast majority remain positive or neutral. This broad snapshot might suggest that the overall atmosphere on Reddit is mostly calm and positive, but as our analysis will show, things are far more complex beneath the surface.
+Before examining the structure of interactions on Reddit, it helps to start with a high-level view of sentiment across all shared hyperlinks. Only around 10% of cross-subreddit mentions express negative sentiment, while the overwhelming majority are neutral or positive. At first glance, this suggests a largely calm and constructive environment—but as the analysis unfolds, it becomes clear that the dynamics beneath the surface are far more nuanced.
+
 
 <details class="plotly-details" data-src="{{ '/assets/plots/sentiment_distribution_plot_web.html' | relative_url }}" open>
 	<summary>Sentiment Distribution</summary>
@@ -100,7 +101,8 @@ Before diving deeper into the structure of Reddit’s interactions, let’s star
 
 ### Mapping Asymmetric Relationships
 
-Before diving into the nuances of sentiment and motivation, we start by mapping how unevenly subreddits interact with one another. Some communities attract enormous attention, whether admiration, mockery, or criticism, while barely replying at all, whereas others send out thousands of links without receiving much back. By examining these imbalances in incoming vs. outgoing mentions, we can uncover which subreddits become frequent targets, which ones act as loud broadcasters, and how these asymmetries lay the groundwork for the deeper relational patterns we analyze next.
+Before diving into the nuances of sentiment and motivation, we first ask a simpler question: how evenly do subreddits interact with one another? The answer is—**very unevenly**. Some communities draw enormous attention—whether admiration, mockery, or criticism—while offering little in return. Others, by contrast, broadcast thousands of links outward but receive scant attention themselves. By examining these imbalances between incoming and outgoing mentions, we can identify which subreddits become frequent targets, which act as loud broadcasters, and how these asymmetries set the stage for the deeper relational patterns explored next.
+
 
 **A First Look--Who talks much more than they listen—and what does that reveal?**
 
@@ -109,15 +111,18 @@ Before diving into the nuances of sentiment and motivation, we start by mapping 
 	<div class="plotly-holder"></div>
 </details>
 
-When we compare how often communities mention others versus how often they are mentioned themselves, striking patterns emerge. 
+When we compare how often communities mention others with how often they are mentioned in return, clear patterns begin to surface. One stands out immediately: **r/AskReddit** attracts an overwhelming number of incoming links—unsurprising for a community built around questions that ripple across the platform. At the other extreme lies **r/subredditdrama**, the most prolific sender of links, reflecting its explicit role as a curator of conflicts unfolding elsewhere on Reddit.
 
-Already, one pattern stands out: ***r/AskReddit*** receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is ***r/subredditdrama***, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
+This contrast already sketches two distinct roles within the ecosystem: hubs of curiosity that draw attention inward, and hubs of commentary that project attention outward.
 
-Even before diving deeper, we can already see the contrast between hubs of curiosity and hubs of commentary. These contrasts reveal early hints of Reddit’s internal dynamics, where some communities become magnets for discussion while others act as active commentators on the rest of the ecosystem. 
+Together, they offer an early glimpse into Reddit’s internal dynamics, where some communities become focal points for discussion while others specialize in observing, amplifying, and reacting to the rest of the network.
+
 
 
 <div style="background-color:#f6f8fa; padding:12px 16px; border-radius:6px; margin:1em 0;">
-<strong>🔍 Before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.</strong>
+<strong>🔍 Structure tells us where attention flows—but what about how it feels?</strong>
+To answer that, we turn from interaction asymmetry to sentiment asymmetry.</br>
+Understanding this shift hinges on a single metric: the asymmetry score. Here’s how it is computed.
 </div>
 
 
@@ -214,7 +219,7 @@ This score is positive when A is more positive toward B than B is toward A, nega
 </details>
 
 
-**Who talks much more than they listen—and what does that reveal?**
+**Where does sentiment flow unevenly across Reddit?**
 
 With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
