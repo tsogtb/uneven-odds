@@ -179,7 +179,7 @@ This score is positive when A is more positive toward B than B is toward A, nega
 With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
 **[the plot]**
-<details class="plotly-details" data-src="{{'assets\plots\top20_most_asymmetric_subreddit_pairs.png' | relative_url }}">
+<details class="plotly-details" data-src="{{'/assets/plots/top20_most_asymmetric_subreddit_pairs.png' | relative_url }}">
 	<summary>Top 20 Most Asymmetric Subreddit Pairs</summary>
 	<div class="plotly-holder"></div>
 </details>
@@ -718,7 +718,10 @@ Subreddits that receive a lot of incoming links, the “big fish” of Reddit, a
 At the same time, being structurally balanced does not guarantee symmetry: some communities sit near the center in terms of incoming and outgoing activity, yet still appear in several asymmetric relationships. The case of India is a good example. Its overall activity looks balanced, but it is repeatedly involved in one-sided interactions. This suggests that asymmetry is not only about volume, but also about who is being talked about, and why.
 
 **[the plot]**
-
+<details class="plotly-details" data-src="{{ '/assets/plots/structural_skew_vs_asymmetry.html' | relative_url }}">
+	<summary>Structural Skew vs. Sentiment Asymmetry Involvement</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 ### Types of relationships
 
@@ -741,6 +744,10 @@ After identifying asymmetric relationships, we now focus on one-sided attacks an
 Looking at which textual features matter most for distinguishing relationship types already provides useful insight. Some patterns consistently appear in one-sided attacks, suggesting that these interactions follow recognizable linguistic dynamics rather than occurring at random. This highlights that asymmetry is not only a structural phenomenon, but is also reflected in the way interactions are expressed—an aspect we will examine more closely in the next section.
 
 **[the plot]**
+<details class="plotly-details" data-src="{{ '/assets/plots/one_sided_negative_relationships.html' | relative_url }}">
+	<summary>One-sided Negative Relationships</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
 
@@ -778,9 +785,14 @@ LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framew
 
 
 ### Features in Hostile interactions 
-We now turn to the language patterns associated with hostile interactions, focusing on links that fall into one-sided negative, opposite polarity, or mutual negative relationships.
+We now turn to the language patterns associated with **hostile interactions**, focusing on links that fall into one-sided negative, opposite polarity, or mutual negative relationships.
 
 **[the plot]**
+<details class="plotly-details" data-src="{{ '/assets/plots/top_features_lasso_vs_ridge.png' | relative_url }}">
+	<summary>Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
+	<div class="plotly-holder"></div>
+</details>
+
 
 Beyond the expected emotional markers, a striking result is the strong influence of **non-LIWC features**. Measures such as readability, message length, sentence complexity, and character-level statistics consistently rank among the most important signals. This suggests that hostile interactions are not only emotionally charged, but also **structurally different**: they tend to be longer, denser, and more carefully constructed, resembling arguments or justifications rather than spontaneous reactions. In other words, hostility here often comes with effort—users take time to explain, argue, and insist.
 
@@ -793,7 +805,10 @@ To better understand how hostility operates, we move beyond simply identifying n
 The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
 
 **[the plot]**
-
+<details class="plotly-details" data-src="{{ '/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png' | relative_url }}">
+	<summary>Sentiment Distribution</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit **higher levels** of **negative affect** and **broader emotional load**, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting **more constrained** or **reactive forms of negativity**. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
 
@@ -801,7 +816,20 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 ### Who are the Attackers, the Receivers, and the Peaceful ones?
 
 **[the plot]**
+<details class="plotly-details" data-src="{{ '/assets/plots/negative_country_incoming_outgoing.png' | relative_url }}">
+	<summary>Top 10 Country Subreddits by Negative Incoming Posts</summary>
+	<div class="plotly-holder"></div>
+</details>
 
+<details class="plotly-details" data-src="{{ '/assets/plots/negative_country_out_over_in_ratio.png' | relative_url }}">
+	<summary>Top 10 Country Subreddits by Negative Outgoing Posts</summary>
+	<div class="plotly-holder"></div>
+</details>
+
+<details class="plotly-details" data-src="{{ '/assets/plots/negative_country_out_vs_in_ratio.png' | relative_url }}">
+	<summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 
 
