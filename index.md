@@ -76,7 +76,10 @@ Already, one pattern stands out: ***AskReddit*** receives an enormous amount of 
 Even before diving deeper, we can already see the contrast between hubs of curiosity and hubs of commentary. These contrasts reveal early hints of Reddit’s internal dynamics, where some communities become magnets for discussion while others act as active commentators on the rest of the ecosystem. 
 
 
-> 🧠 **But before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.**  
+<div style="background-color:#f6f8fa; padding:12px 16px; border-radius:6px; margin:1em 0;">
+<strong>🔍 Before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.</strong>
+</div>
+
 
 
 ### Pairwise Sentiment and Asymmetry Computation
@@ -89,10 +92,26 @@ For every unordered pair of subreddits {A, B}, we compute sentiment statistics i
 <!-- - A → B: mean sentiment of all links from A to B  
 - B → A: mean sentiment of all links from B to A   -->
 
-| Direction | Definition |
+<!-- | Direction | Definition |
 |----------|------------|
 | A → B | sentiment of all links from A to B |
-| B → A | sentiment of all links from B to A |
+| B → A | sentiment of all links from B to A | -->
+
+<table>
+  <tr>
+    <th align="center">Direction</th>
+    <th align="center">Definition</th>
+  </tr>
+  <tr>
+    <td align="center">A → B</td>
+    <td>sentiment of all links from A to B</td>
+  </tr>
+  <tr>
+    <td align="center">B → A</td>
+    <td>sentiment of all links from B to A</td>
+  </tr>
+</table>
+
 
 
 Let the sentiment of the i-th link from A to B be denoted by  
@@ -170,6 +189,7 @@ Looking through the strongest pairs, several examples stand out. **`India → su
 Another telling case is the_donald → worldnews. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
 A third example, feminism → mensrights, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
 Together, these pairs illustrate why asymmetry matters: it is not just about who talks more, but about the cultural, political, and social frictions that shape how communities choose their targets, and how loudly they decide to speak.
+
 
 
 <div style="max-height: 400px; overflow: auto; border: 2px solid #eee; padding: 8px;">
@@ -737,6 +757,26 @@ LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framew
 
 
 - In our analysis, LIWC features provide complementary signals to sentiment labels, helping distinguish different types of relationships by their expressive and emotional characteristics.
+
+
+### Features in Hostile interactions 
+We now turn to the language patterns associated with hostile interactions, focusing on links that fall into one-sided negative, opposite polarity, or mutual negative relationships.
+
+**[the plot]**
+
+Beyond the expected emotional markers, a striking result is the strong influence of **non-LIWC features**. Measures such as readability, message length, sentence complexity, and character-level statistics consistently rank among the most important signals. This suggests that hostile interactions are not only emotionally charged, but also **structurally different**: they tend to be longer, denser, and more carefully constructed, resembling arguments or justifications rather than spontaneous reactions. In other words, hostility here often comes with effort—users take time to explain, argue, and insist.
+
+Within the LIWC categories, some dimensions stand out more than others. **Cognitive process features**(such as CogMech) play a notable role, indicating language focused on reasoning, causation, and explanation (“because”, “should”, “know”). This aligns with the idea that negative or conflictual exchanges frequently involve attempts to rationalize a position or challenge another one. At the same time, the presence of anger-related features is expected in hostile interactions, but what stands out is how strongly they contribute when combined with other signals. Rather than appearing in isolation, they come together with structural and cognitive markers, amplifying their impact. This suggests that hostile links are not simply driven by emotional reactions, but by messages where negative emotion is embedded in more deliberate, structured, and cognitively engaged discourse, reinforcing the overall intensity of the interaction.
+
+
+### One-sided vs mutual hostilities
+To better understand how hostility operates, we move beyond simply identifying negative interactions and compare two distinct situations: one-sided negative attacks and mutual negative exchanges. The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
+
+**[the plot]**
+
+
+Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit higher levels of negative affect and broader emotional load, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting more constrained or reactive forms of negativity. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
+
 
 
 
