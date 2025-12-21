@@ -61,8 +61,7 @@ Before diving deeper into the structure of Reddit’s interactions, let’s star
 
 Before diving into the nuances of sentiment and motivation, we start by mapping how unevenly subreddits interact with one another. Some communities attract enormous attention, whether admiration, mockery, or criticism, while barely replying at all, whereas others send out thousands of links without receiving much back. By examining these imbalances in incoming vs. outgoing mentions, we can uncover which subreddits become frequent targets, which ones act as loud broadcasters, and how these asymmetries lay the groundwork for the deeper relational patterns we analyze next.
 
-### A First Look:  
-***Who talks much more than they listen—and what does that reveal?***
+**A First Look--Who talks much more than they listen—and what does that reveal?**
 
 <details class="plotly-details" data-src="{{ '/assets/plots/subreddit_most_asymmetric_in_outgoing_links.html' | relative_url }}">
 	<summary>Subreddits with Most Asymmetric Incoming vs Outgoing Links</summary>
@@ -179,8 +178,11 @@ This score is positive when A is more positive toward B than B is toward A, nega
 
 With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
-
 **[the plot]**
+<details class="plotly-details" data-src="{{'assets\plots\top20_most_asymmetric_subreddit_pairs.png' | relative_url }}">
+	<summary>Top 20 Most Asymmetric Subreddit Pairs</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 To understand what these asymmetric relationships actually look like, we break them down using a few key features. **`sentiment_A_to_B`** and **`sentiment_B_to_A`** tell us whether references between two communities lean positive or negative. We tend to compare the two values.  And **`count_A_to_B`** and **`count_B_to_A`** show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
 Looking through the strongest pairs, several examples stand out. **`India → subredditdrama`** appears almost one-sidedly positive: India sends consistently positive references, yet subredditdrama responds with a much larger volume of mentions whose average sentiment sits around **0.4**. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit.
@@ -742,8 +744,24 @@ Looking at which textual features matter most for distinguishing relationship ty
 
 Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
 
+
+<div class="liwc-card">
+  <div class="liwc-badge">What is LIWC?</div>
+
+  <ul class="liwc-list">
+    <li>LIWC (Linguistic Inquiry and Word Count) analyzes text based on psychological word categories.</li>
+    <li>It captures emotions, thinking styles, and social signals hidden in language.</li>
+    <li>LIWC focuses on <strong>how</strong> something is said, not just <strong>what</strong> is said.</li>
+    <li>In our study, LIWC helps explain sentiment and asymmetry in subreddit interactions.</li>
+  </ul>
+
+  <div class="speech-bubble">
+    “Am I being emotional, analytical, or defensive in how I link to others?”
+  </div>
+</div>
+
+
 What is LIWC?
-Small part on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind it, and their importance in our analysis. speech bubble where our reddit character is questioning himself?
 
 LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framework designed to quantify linguistic and psychological patterns in written language.
 
@@ -770,12 +788,19 @@ Within the LIWC categories, some dimensions stand out more than others. **Cognit
 
 
 ### One-sided vs mutual hostilities
-To better understand how hostility operates, we move beyond simply identifying negative interactions and compare two distinct situations: one-sided negative attacks and mutual negative exchanges. The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
+To better understand how hostility operates, we move beyond simply identifying negative interactions and compare two distinct situations: **one-sided negative attacks and mutual negative exchanges.**
+
+The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
 
 **[the plot]**
 
 
-Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit higher levels of negative affect and broader emotional load, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting more constrained or reactive forms of negativity. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
+Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit **higher levels** of **negative affect** and **broader emotional load**, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting **more constrained** or **reactive forms of negativity**. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
+
+
+### Who are the Attackers, the Receivers, and the Peaceful ones?
+
+**[the plot]**
 
 
 
