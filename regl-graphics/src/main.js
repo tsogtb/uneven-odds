@@ -18,7 +18,7 @@ const regl = createREGL({
 
 const stories = [
   {
-    description: "The story, at first glance.",
+    description: "The story at first glance.",
     generate: () => createStarData(regl, { passive: true })
   },
 
@@ -65,14 +65,13 @@ const stories = [
   },
   {
     description: `
-    <span style="color:#FF3333">286,561 body</span>-hyperlinks<br>
-    <span style="color:#3380FF">571,927 title</span>-hyperlinks.
+    <span style="color:#FF5700">858,488 total</span> hyperlinks.
     `,
     generate: () => createStarData(regl, {
       passive: false,
       clusters: [
-        { num_stars: 2865, center: { x: 0, y: 0, z: 0 }, radius: 1.0, color: [1.0, 0.2, 0.2], shape: 'circle' },
-        { num_stars: 5719, center: { x: 0, y: 0, z: 0 }, radius: 1.0, color: [0.2, 0.5, 1.0], shape: 'circle' }
+        { num_stars: 2865, center: { x: 0, y: 0, z: 0 }, radius: 1.5, color: [1.0, 0.2, 0.2], shape: 'circle' },
+        { num_stars: 5719, center: { x: 0, y: 0, z: 0 }, radius: 1.5, color: [0.2, 0.5, 1.0], shape: 'circle' }
       ]
     })
   },
@@ -142,10 +141,10 @@ const stories = [
           shape: 'rectangle' 
         },
         { 
-          num_stars: 375, 
+          num_stars: 275, 
           center: { x: -0.15, y: 1, z: 0 }, 
           width:3.5,   // Spans the gap between -2.5 and 2.5
-          height: 0.025,  // Very thin
+          height: 0.015,  // Very thin
           color: [0.,0.502,0.], 
           shape: 'rectangle' 
         },
@@ -171,6 +170,100 @@ const stories = [
     })
   },
   {
+    description: `One-sided Neutral Relationship.`,
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        // Left Circle
+        { num_stars: 4000, center: { x: -2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // Right Circle
+        { num_stars: 4000, center: { x: 2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // The Bridge (Thin rectangle connecting them)
+        { 
+          num_stars: 1500, 
+          center: { x: 0.15, y: -1, z: 0 }, 
+          width: 3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
+          color: [1.0, 1.0, 1.0], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 275, 
+          center: { x: -0.15, y: 1, z: 0 }, 
+          width:3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.015,  // Very thin
+          color: [0.,0.502,0.], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 150, 
+          center: { x: 1.75, y: 1, z: 0 }, 
+          width: 0.15,   // arrow length
+          height: 0.25,  // base width
+          color: [0.,0.502,0.], 
+          shape: 'arrow',
+          direction: 1
+        },
+        { 
+          num_stars: 300, 
+          center: { x: -1.75, y: -1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [1.0, 1.0, 1.0], 
+          shape: 'arrow',
+          direction: -1
+        },
+      ]
+    })
+  },
+  {
+    description: `One-sided Neutral Relationship.`,
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        // Left Circle
+        { num_stars: 4000, center: { x: -2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // Right Circle
+        { num_stars: 4000, center: { x: 2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // The Bridge (Thin rectangle connecting them)
+        { 
+          num_stars: 1500, 
+          center: { x: 0.15, y: -1, z: 0 }, 
+          width: 3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
+          color: [1.0, 1.0, 1.0], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 275, 
+          center: { x: -0.15, y: 1, z: 0 }, 
+          width:3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.015,  // Very thin
+          color: [1.0 ,0.,0.], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 150, 
+          center: { x: 1.75, y: 1, z: 0 }, 
+          width: 0.15,   // arrow length
+          height: 0.25,  // base width
+          color: [1.0, 0., 0.], 
+          shape: 'arrow',
+          direction: 1
+        },
+        { 
+          num_stars: 300, 
+          center: { x: -1.75, y: -1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [1.0, 1.0, 1.0], 
+          shape: 'arrow',
+          direction: -1
+        },
+      ]
+    })
+  },
+  {
     description: `One-sided <span style="color:#008000">Positive</span> Relationship.`,
     generate: () => createStarData(regl, {
       passive: false,
@@ -236,10 +329,10 @@ const stories = [
           shape: 'rectangle' 
         },
         { 
-          num_stars: 375, 
+          num_stars: 275, 
           center: { x: -0.15, y: 1, z: 0 }, 
           width:3.5,   // Spans the gap between -2.5 and 2.5
-          height: 0.025,  // Very thin
+          height: 0.015,  // Very thin
           color: [1.0, 0., 0.], 
           shape: 'rectangle' 
         },
@@ -326,7 +419,54 @@ const stories = [
         },
       ]
     })
-  }
+  },
+  {
+    description: `<span style="color:#008000">Opposite</span> <span style="color:#FF0000">Polarity</span> Relationship.`,
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        // Left Circle
+        { num_stars: 4000, center: { x: -2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // Right Circle
+        { num_stars: 4000, center: { x: 2.5, y: 0, z: 0 }, radius: 1.2, color: [1.,0.341,0.], shape: 'circle' },
+        // The Bridge (Thin rectangle connecting them)
+        { 
+          num_stars: 1500, 
+          center: { x: 0.15, y: -1, z: 0 }, 
+          width: 3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
+          color: [1.0, 0.0, 0.0], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 1500, 
+          center: { x: -0.15, y: 1, z: 0 }, 
+          width:3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
+          color: [0.,0.502,0.], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 300, 
+          center: { x: 1.75, y: 1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [0.,0.502,0.], 
+          shape: 'arrow',
+          direction: 1
+        },
+        { 
+          num_stars: 300, 
+          center: { x: -1.75, y: -1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [1.0, 0.0, 0.0], 
+          shape: 'arrow',
+          direction: -1
+        },
+      ]
+    })
+  },
 ];
 
 // Pallete [1.0, 0.85, 0.7], [1.0, 0.4, 0.2], [0.5, 0.7, 1.0], [1.0, 1.0, 1.0], [1.0, 0.95, 0.4]
