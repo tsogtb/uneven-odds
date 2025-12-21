@@ -799,7 +799,7 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 <details class="plotly-details-png" open>
   <summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="80%">
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="80%"></div>
 </details>
 
 
