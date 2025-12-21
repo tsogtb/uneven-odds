@@ -1347,3 +1347,48 @@ pre {
 .plotly-details summary:hover::before {
   color: #000;
 }
+
+
+/* Ensure the footer section stands out */
+.toc-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee; /* Replacing the hr tag with a cleaner border */
+}
+
+/* Force the Research Questions title to be visible */
+.toc-footer .toc-title-small {
+  color: #ED001C; /* Using your site's accent red */
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Optional: If you want the Research Questions to ALWAYS stay at the bottom 
+   even when the TOC list scrolls, use this: */
+.toc-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toc-footer {
+  margin-top: auto; /* Pushes the footer to the very bottom of the flex container */
+  padding-bottom: 1rem;
+}
+
+.sticky-side {
+  position: sticky;
+  top: 4rem; /* same offset as TOC */
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  padding-left: 1rem;
+}
+.right-column {
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 6rem);
+  overflow-y: auto;
+
+  padding-left: 1rem;
+  border-left: 2px solid #eee;
+}

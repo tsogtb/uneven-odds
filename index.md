@@ -48,13 +48,7 @@ Taken together, these elements allow us to view Reddit not as isolated forums, b
 
 Here are the key numbers that shape our dataset.
 
-### Research Questions
-
-- **Which subreddit pairs show the strongest polarity asymmetries?**
-
-- **Are one-sided hostilities different from mutual hostilities?**
-
-- **What impact do polarity asymmetries have on the network?**
+**[enter numbers]**
 
 Before diving deeper into the structure of Reddit’s interactions, let’s start with a simple overview of general sentiment across all hyperlinks: only about 10% of cross-subreddit mentions carry a negative tone, while the vast majority remain positive or neutral. This broad snapshot might suggest that the overall atmosphere on Reddit is mostly calm and positive, but as our analysis will show, things are far more complex beneath the surface.
 
