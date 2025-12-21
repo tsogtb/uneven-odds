@@ -49,6 +49,28 @@ Taken together, these elements allow us to view Reddit not as isolated forums, b
 Here are the key numbers that shape our dataset.
 
 **[enter numbers]**
+<div style="text-align: center; margin: 20px 0;">
+  <table style="margin: 0 auto;">
+    <tr>
+      <th align="center">Keys</th>
+      <th align="center">Numbers</th>
+    </tr>
+    <tr>
+      <td align="center">Total Subreddits</td>
+      <td>858,488</td>
+    </tr>
+    <tr>
+      <td align="center">Unique Pairs</td>
+      <td>309,667</td>
+    </tr>
+    <tr>
+      <td align="center">Asymmetric Pairs</td>
+      <td>6,508</td>
+    </tr>
+  </table>
+</div>
+
+
 
 Before diving deeper into the structure of Reddit’s interactions, let’s start with a simple overview of general sentiment across all hyperlinks: only about 10% of cross-subreddit mentions carry a negative tone, while the vast majority remain positive or neutral. This broad snapshot might suggest that the overall atmosphere on Reddit is mostly calm and positive, but as our analysis will show, things are far more complex beneath the surface.
 
@@ -767,7 +789,8 @@ We now turn to the language patterns associated with **hostile interactions**, f
 
 <details class="plotly-details-png" open>
   <summary>Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
-  <img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
+  <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
+  </div>
 </details>
 
 
