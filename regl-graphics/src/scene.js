@@ -55,6 +55,21 @@ export function createStarData(regl, {
           positions[idx + 1] = center.y + r * Math.sin(phi) * Math.sin(theta);
           positions[idx + 2] = center.z + r * Math.cos(phi);
         
+        } else if (shape === 'arrow') {
+          const w = cluster.width || 1;   // length of arrow
+          const h = cluster.height || 1;  // base width
+          const dir = cluster.direction || 1; // 1 = right, -1 = left
+        
+          // xNorm = 0 at base, 1 at tip
+          const xNorm = Math.random();
+          
+          // taper along y to form a triangular arrow
+          const yOffset = (Math.random() - 0.5) * h * (1 - xNorm);
+        
+          // position relative to cluster center
+          positions[idx + 0] = center.x + dir * (-w/2 + xNorm * w);
+          positions[idx + 1] = center.y + yOffset;
+          positions[idx + 2] = center.z;
         } else if (shape === 'rectangle') {
           // Rectangle: Uniform distribution in a box
           const w = cluster.width || 1;

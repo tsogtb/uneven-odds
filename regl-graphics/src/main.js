@@ -64,11 +64,7 @@ const stories = [
     })
   },
   {
-    description: "Each star represents a subreddit. Passive mode shows <b>67,180</b> subreddits.",
-    generate: () => createStarData(regl, { passive: true })
-  },
-  {
-    description: "Connecting two distinct communities with a bridge of shared users.",
+    description: "One-sided Negative Relationship.",
     generate: () => createStarData(regl, {
       passive: false,
       clusters: [
@@ -79,12 +75,38 @@ const stories = [
         // The Bridge (Thin rectangle connecting them)
         { 
           num_stars: 1500, 
-          center: { x: 0, y: 0, z: 0 }, 
-          width: 5.0,   // Spans the gap between -2.5 and 2.5
-          height: 0.2,  // Very thin
+          center: { x: 0.15, y: -1, z: 0 }, 
+          width: 3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
+          color: [1.0, 0.0, 0.0], 
+          shape: 'rectangle' 
+        },
+        { 
+          num_stars: 1500, 
+          center: { x: -0.15, y: 1, z: 0 }, 
+          width:3.5,   // Spans the gap between -2.5 and 2.5
+          height: 0.1,  // Very thin
           color: [1.0, 1.0, 1.0], 
           shape: 'rectangle' 
-        }
+        },
+        { 
+          num_stars: 300, 
+          center: { x: 1.75, y: 1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [1.0, 1.0, 1.0], 
+          shape: 'arrow',
+          direction: 1
+        },
+        { 
+          num_stars: 300, 
+          center: { x: -1.75, y: -1, z: 0 }, 
+          width: 0.3,   // arrow length
+          height: 0.5,  // base width
+          color: [1.0, 0.0, 0.0], 
+          shape: 'arrow',
+          direction: -1
+        },
       ]
     })
   }

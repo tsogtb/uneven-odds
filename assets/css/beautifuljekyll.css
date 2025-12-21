@@ -1256,10 +1256,7 @@ pre {
   padding: 0.7rem 1rem;
   background: #000;
   list-style: none;
-  border-left: 2px solid #ED001C;
-  border-right: 2px solid #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+
 }
 
 .iframe-sticky summary::-webkit-details-marker {
