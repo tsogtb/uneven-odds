@@ -180,9 +180,9 @@ With this score in hand, we can now identify which subreddit pairs stand out as 
 
 **[the plot]**
 
-<details>
-  <summary class="plotly-details-png">Top 20 Most Asymmetric Subreddit Pairs</summary>
-  <img src="{{ site.baseurl }}/assets/plots/top20_most_asymmetric_subreddit_pairs.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
+<details class="plotly-details-png">
+  <summary>Top 20 Most Asymmetric Subreddit Pairs</summary>
+  <img src="{{ site.baseurl }}/assets/plots/top20_most_asymmetric_subreddit_pairs.png" alt="top20_most_asymmetric_subreddit_pairs" width="100%">
 </details>
 
 
@@ -746,9 +746,9 @@ After identifying asymmetric relationships, we now focus on one-sided attacks an
 Looking at which textual features matter most for distinguishing relationship types already provides useful insight. Some patterns consistently appear in one-sided attacks, suggesting that these interactions follow recognizable linguistic dynamics rather than occurring at random. This highlights that asymmetry is not only a structural phenomenon, but is also reflected in the way interactions are expressed—an aspect we will examine more closely in the next section.
 
 **[the plot]**
-<details class="plotly-details" data-src="{{ '/assets/plots/one_sided_negative_relationships.html' | relative_url }}">
-	<summary>One-sided Negative Relationships</summary>
-	<div class="plotly-holder"></div>
+<details class="plotly-details-png">
+  <summary>Top 20 Most Features for Classifying Relationship Types</summary>
+  <img src="{{ site.baseurl }}/assets/plots/relationship_type_feature_importance.png" alt="relationship_type_feature_importance" width="100%">
 </details>
 
 Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
@@ -790,8 +790,8 @@ LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framew
 We now turn to the language patterns associated with **hostile interactions**, focusing on links that fall into one-sided negative, opposite polarity, or mutual negative relationships.
 
 **[the plot]**
-<details>
-  <summary class="plotly-details-png">Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
+<details class="plotly-details-png">
+  <summary>Top 15 Features(LIWC subset): Lasso vs. Ridge(one-sided (neg), opposite polarity, mutual negative)</summary>
   <img src="{{ site.baseurl }}/assets/plots/top_features_lasso_vs_ridge.png" alt="top20_most_asymmetric_subreddit_pairs" width="70%">
 </details>
 
@@ -807,9 +807,9 @@ To better understand how hostility operates, we move beyond simply identifying n
 The goal is to see whether these two forms of conflict rely on the same linguistic signals or whether they differ in intensity, structure, or emotional composition. By focusing on LIWC-based features, we can examine how emotional and cognitive cues vary depending on whether negativity is sustained by a single side or shared between both communities.
 
 **[the plot]**
-<details>
-  <summary class="plotly-details-png">LIWC Differences One-sided vs. Mutual Negative</summary>
-  <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="70%">
+<details class="plotly-details-png">
+  <summary>LIWC Differences One-sided vs. Mutual Negative</summary>
+  <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="100%">
 </details>
 
 Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit **higher levels** of **negative affect** and **broader emotional load**, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting **more constrained** or **reactive forms of negativity**. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
@@ -819,21 +819,21 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 **[the plot]**
 
-<details>
-  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Incoming Posts</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_incoming_outgoing.png" alt="negative_country_incoming_outgoing" width="70%">
+<details class="plotly-details-png">
+  <summary>Top 10 Country Subreddits by Negative Incoming Posts</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_incoming_outgoing.png" alt="negative_country_incoming_outgoing" width="100%">
 </details>
 
 
-<details>
-  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Outgoing Posts</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_over_in_ratio.png" alt="negative_country_out_over_in_ratio" width="70%">
+<details class="plotly-details-png">
+  <summary>Top 10 Country Subreddits by Negative Outgoing Posts</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_over_in_ratio.png" alt="negative_country_out_over_in_ratio" width="100%">
 </details>
 
 
-<details>
-  <summary class="plotly-details-png">Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="70%">
+<details class="plotly-details-png">
+  <summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="100%">
 </details>
 
 
