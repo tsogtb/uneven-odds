@@ -3,6 +3,7 @@ import { Camera } from "./camera.js"
 import { createRenderer } from "./renderer.js"
 import { createScene, createStarData } from "./scene.js"
 
+
 const canvas = document.getElementById("c")
 
 const regl = createREGL({ 
@@ -17,11 +18,43 @@ const regl = createREGL({
 
 const stories = [
   {
-    description: "- Let’s take a quick tour of this miniature universe.",
+    description: "Left blank for now. (some sort of welcoming msg)",
     generate: () => createStarData(regl, { passive: true })
   },
+
   {
-    description: "Body hyperlink (Red) vs. Title hyperlinks (Blue).",
+    description: "There are <b>67,180</b> subreddits in our dataset.  ",
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        { 
+          num_stars: 67180, 
+          center: { x: 0, y: 0, z: 5 }, 
+          radius: 15, 
+          shape: 'sphere' 
+        }
+      ]
+    })
+  },
+  {
+    description: "There are <b>858,488</b> hyperlinks in our dataset.",
+    generate: () => createStarData(regl, {
+      passive: false,
+      clusters: [
+        { 
+          num_stars: 858488, 
+          center: { x: 0, y: 0, z: 5 }, 
+          radius: 15, 
+          shape: 'sphere' 
+        }
+      ]
+    })
+  },
+  {
+    description: `
+    There are <span style="color:#FF3333">286,561 body</span>-hyperlinks and<br>
+    <span style="color:#3380FF">571,927 title</span>-hyperlinks in our dataset.
+    `,
     generate: () => createStarData(regl, {
       passive: false,
       clusters: [

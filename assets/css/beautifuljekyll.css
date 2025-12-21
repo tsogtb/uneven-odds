@@ -1170,7 +1170,7 @@ pre {
   font-size: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  border-right: 2px solid #eee;
+  border-left: 2px solid #eee;
 }
 
 .toc-title-small {

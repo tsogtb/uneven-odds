@@ -19,7 +19,7 @@ export function createRenderer(regl, starData) {
 			void main() {
         float starId = hash(position);
         
-        float twinkle = 0.9 + 0.1 * sin(uTime * 1.5 + starId * 100.0);
+        float twinkle = 0.6 + 0.4 * sin(uTime * 3.0 + starId * 100.0);
         vColor = color * twinkle;
 
         vec4 mvPosition = view * vec4(position, 1.0);

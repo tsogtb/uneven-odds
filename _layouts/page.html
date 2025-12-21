@@ -19,6 +19,12 @@ layout: base
         {% assign parts = content | split: '<!--toc-->' %}
       
         <div class="row">    
+          <!-- Main content -->
+          <article class="col-lg-10">
+            <div class="content container-md">
+              {{ parts[1] }}
+            </div>
+          </article>
           <!-- TOC -->
           <aside class="col-lg-2 d-none d-lg-block toc">
             <nav class="toc-inner">
@@ -27,41 +33,45 @@ layout: base
               <div class="toc-list-content">
                 {{ parts[0] }}
               </div>
-              <!--
+              
                 <div class="toc-footer">
-                  <h2 class="toc-title-small">Some info:</h2>
+                  <h2 class="toc-title-small">Research Questions</h2>
                   <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
-                    Some info:
+                    Which subreddit pairs show the strongest polarity asymmetries?
+                  </p>
+              
+                  <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
+                    Are one-sided hostilities different from mutual hostilities?
+                  </p>
+              
+                  <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
+                    What impact do polarity asymmetries have on the network?
                   </p>
                 </div>
-              -->
+              
             </nav>
           </aside>        
-          <!-- Main content -->
-          <article class="col-lg-8">
-            <div class="content container-fluid">
-              {{ parts[1] }}
-            </div>
-          </article>
 
 
+          <!--
           <aside class="col-lg-2 d-none d-lg-block">
             <div class="right-column sticky-side">
-              <h2 class="toc-title-small">Research Questions</h2>
-          
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
-                Which subreddit pairs show the strongest polarity asymmetries?
-              </p>
-          
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
-                Are one-sided hostilities different from mutual hostilities?
-              </p>
-          
-              <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
-                What impact do polarity asymmetries have on the network?
-              </p>
-            </div>
-          </aside>
+                <h2 class="toc-title-small">Research Questions</h2>
+            
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
+                  Which subreddit pairs show the strongest polarity asymmetries?
+                </p>
+            
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
+                  Are one-sided hostilities different from mutual hostilities?
+                </p>
+            
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.3;">
+                  What impact do polarity asymmetries have on the network?
+                </p>
+              </div>
+            </aside>
+            -->
           
           
 

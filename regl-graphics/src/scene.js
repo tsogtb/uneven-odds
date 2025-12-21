@@ -6,7 +6,7 @@ export function createStarData(regl, {
   clusters = [], 
 } = {}) {
 
-  let count = 67180; 
+  let count = 1000000; 
   
   if (!passive) {
     count = clusters.reduce((sum, c) => sum + (c.num_stars || 0), 0);
@@ -40,8 +40,22 @@ export function createStarData(regl, {
       
       for (let i = 0; i < num_stars; i++) {
         const idx = (offset + i) * 3;
-
-        if (shape === 'rectangle') {
+        if (shape === 'sphere') {
+          // Sphere: Uniform distribution in a 3D volume
+          const R = cluster.radius || 1;
+          
+          // 1. Uniformly distribute radius by taking the cube root
+          const r = R * Math.pow(Math.random(), 1/3);
+          
+          // 2. Uniformly distribute direction on a sphere
+          const theta = Math.random() * 2.0 * Math.PI;
+          const phi = Math.acos(2.0 * Math.random() - 1.0);
+        
+          positions[idx + 0] = center.x + r * Math.sin(phi) * Math.cos(theta);
+          positions[idx + 1] = center.y + r * Math.sin(phi) * Math.sin(theta);
+          positions[idx + 2] = center.z + r * Math.cos(phi);
+        
+        } else if (shape === 'rectangle') {
           // Rectangle: Uniform distribution in a box
           const w = cluster.width || 1;
           const h = cluster.height || 1;
