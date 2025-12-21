@@ -871,7 +871,7 @@ Between these two extremes lies a more volatile group, including **r/pics**, **r
 
 ### Who Sits at the Center? Network Centrality by Role
 
-<details>
+<details style="margin-top: 12px; margin-buttom: 12px;">
 <summary style="font-weight: bold;">What is PageRank?</summary>
 PageRank is a centrality measure that identifies the most influential nodes in a network. 
 It was originally developed by Google to rank web pages.
@@ -885,10 +885,10 @@ PR(i) = \frac{1-d}{N} + d \sum_{j \in M(i)} \frac{PR(j)}{L(j)}
 $$
 
 Where: 
-- \( N \): total nodes 
-- \( d \): damping factor (≈ 0.85) 
-- \( M(i) \): nodes linking to \( i \) 
-- \( L(j) \): outlinks from node \( j \)
+- \( N \): total nodes <br>
+- \( d \): damping factor (≈ 0.85) <br>
+- \( M(i) \): nodes linking to \( i \) <br>
+- \( L(j) \): outlinks from node \( j \) <br>
 
 </details>
 
