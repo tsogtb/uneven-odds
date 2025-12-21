@@ -63,10 +63,10 @@ Here are the key numbers that shape our dataset.
       <td align="center">Unique Pairs</td>
       <td>309,667</td>
     </tr>
-    <tr>
+    <!-- <tr>
       <td align="center">Asymmetric Pairs</td>
       <td>6,508</td>
-    </tr>
+    </tr> -->
   </table>
 </div>
 
@@ -823,6 +823,25 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 <details class="plotly-details-png" open>
   <summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
   <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="80%"></div>
+</details>
+
+
+### Hierarchy: Who shapes the landscape?
+
+Beyond roles, some communities are structurally central in the network: they receive links from many other subreddits and have high PageRank or in-degree. When we cross roles with centrality, we can see: whether receivers tend to be big, whether attackers are more peripheral communities, whether peaceful communities play a central role in information flow.
+
+<details class="plotly-details-png" open>
+  <summary>Network Centrality by Role (PageRank Distribution)</summary>
+  <img src="{{ site.baseurl }}/assets/plots/pagerank_by_role.png" alt="pagerank_by_role" width="80%">
+</details>
+
+
+### Do asymmetries and link sentiment tend to change over time?
+Finally, we look at how asymmetric relationships evolve between 2014 and 2017: does the number of one-sided hostilities increase or decrease? do certain subreddits keep the same role over years, or do they switch from peaceful to attacker, from receiver to mutual hostile?
+
+<details class="plotly-details-png" open>
+  <summary>Number of Hyperlinks over Time(Monthly) & Percentage of Negative Links over Time(Monthly)</summary>
+  <img src="{{ site.baseurl }}/assets/plots/temporal_statistics_network_growth.png" alt="temporal_statistics_network_growth" width="80%">
 </details>
 
 
