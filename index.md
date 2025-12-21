@@ -823,7 +823,13 @@ The goal is to see whether these two forms of conflict rely on the same linguist
   <img src="{{ site.baseurl }}/assets/plots/liwc_differences_one_sided_vs_mutual_negative.png" alt="liwc_differences_one_sided_vs_mutual_negative" width="100%">
 </details>
 
-Several patterns emerge from this comparison. One-sided negative interactions tend to exhibit **higher levels** of **negative affect** and **broader emotional load**, with distributions shifted upward for categories such as negative emotion and general affect. Mutual negative exchanges, while still hostile, show slightly lower medians and more compact spreads, suggesting **more constrained** or **reactive forms of negativity**. In contrast, features related to explanation and reasoning, such as causal or certainty-related markers, are relatively more present in mutual hostility, indicating exchanges that resemble argumentative back-and-forth rather than prolonged unilateral criticism. Together, these differences highlight that one-sided attacks are not only asymmetric in structure, but also in how emotional and cognitive signals are deployed.
+Clear and statistically meaningful differences emerge between one-sided and mutual negative interactions. One-sided negativity carries a **stronger emotional load**, with higher levels of negative affect across multiple LIWC categories. Notably, **LIWC_Negemo** is significantly higher in one-sided links (0.0596 vs. 0.0491; Cliff’s δ = 0.118, q < 0.001), with similar effects for **LIWC_Affect** (δ = 0.090) and **LIWC_Anger** (δ = 0.087). Together, these results indicate that unilateral hostility is more emotionally intense and expressive.
+Mutual negative exchanges, by contrast, show slightly higher use of **cognitive and explanatory language**, such as **LIWC_Cause** and **LIWC_Certain** (|δ| ≈ 0.04), consistent with more argumentative or justificatory interactions. Pronoun usage reinforces this distinction: one-sided negativity involves fewer references to collective or third-party actors (e.g., **LIWC_They**, δ = −0.056), while mutual negativity more often reflects direct engagement between groups.
+
+<div style="background-color:#F3F8F4; padding:12px 16px; border-radius:6px; margin:1em 0;">
+🔑 Overall, these findings show that polarity asymmetry is not only structural but also linguistic. One-sided attacks are marked by heightened emotional expression, whereas mutual hostility appears more constrained and dialogical—resembling reactive back-and-forth exchanges rather than sustained unilateral criticism.
+</div>
+
 
 
 ### Who are the Attackers, the Receivers, and the Peaceful ones?
@@ -885,6 +891,8 @@ Between these two extremes lies a more volatile group, including **r/pics**, **r
   <div style="text-align: center;"><img src="{{ site.baseurl }}/assets/plots/pagerank_by_role.png" alt="pagerank_by_role" width="80%">
   </div>
 </details>
+
+This figure compares the PageRank distributions of subreddits classified as attackers, receivers, or balanced. Subreddits that act as attackers or receivers tend to occupy more central positions in the network, with higher and more dispersed PageRank values, reflecting their stronger integration into cross-subreddit linking patterns. In contrast, balanced subreddits cluster at much lower PageRank levels, indicating a more peripheral role. Together, these distributions suggest that polarity asymmetry is closely tied to network visibility: communities most involved in sending or receiving negativity are also those that sit closest to the structural core of the Reddit network.
 
 
 <!-- ### Do asymmetries and link sentiment tend to change over time?
