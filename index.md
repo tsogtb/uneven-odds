@@ -17,7 +17,6 @@ animate-cover: true
 <!--toc-->
 
 
-
 <details class="iframe-sticky">
   <summary style="color:#FFF">Miniature Universe</summary>
 
@@ -48,34 +47,23 @@ animate-cover: true
 </iframe>
 -->
 
-<details class="plotly-details" id="plotly-details">
-  <summary>Relationship Plot</summary>
-  <div class="plotly-holder"></div>
+
+
+
+<details class="plotly-details" data-src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}">
+	<summary>Distribution of Relationship Types</summary>
+	<div class="plotly-holder"></div>
 </details>
 
-<script>
-document.getElementById("plotly-details").addEventListener("toggle", e => {
-  const details = e.currentTarget
-  const holder = details.querySelector(".plotly-holder")
+<details class="plotly-details" data-src="{{ '/assets/plots/sentiment_distribution_plot_web.html' | relative_url }}">
+	<summary>Sentiment Distribution</summary>
+	<div class="plotly-holder"></div>
+</details>
 
-  if (details.open) {
-    // CREATE on open
-    if (!holder.firstChild) {
-      const iframe = document.createElement("iframe")
-      iframe.src = "{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
-      iframe.loading = "lazy"
-      iframe.width = "100%"
-      iframe.height = "500"
-      iframe.frameBorder = "0"
-      iframe.style.display = "block"
-      holder.appendChild(iframe)
-    }
-  } else {
-    // DESTROY on close
-    holder.innerHTML = ""
-  }
-})
-</script>
+<details class="plotly-details" data-src="{{ '/assets/plots/subreddit_most_asymmetric_in_outgoing_links.html' | relative_url }}">
+	<summary>Subreddits with Most Asymmetric Incoming vs Outgoing Links</summary>
+	<div class="plotly-holder"></div>
+</details>
 
 
 ---
@@ -739,3 +727,51 @@ document.getElementById("plotly-details").addEventListener("toggle", e => {
   </tbody>
 </table>
 </div>
+
+
+
+<script>
+document.querySelectorAll(".plotly-details").forEach(details => {
+	details.addEventListener("toggle", e => {
+		const holder = details.querySelector(".plotly-holder");
+    if (!holder) return;
+
+    if (details.open) {
+			if (!holder.firstChild) {
+				const container = document.createElement("div");
+        container.style.width = "100%";
+        container.style.overflow = "hidden";
+        container.style.position = "relative";
+
+        const iframe = document.createElement("iframe");
+        iframe.src = details.dataset.src;
+        iframe.loading = "lazy";
+        iframe.width = "100%";
+        iframe.height = "1"; // temporary, will resize on load
+        iframe.frameBorder = "0";
+        iframe.style.display = "block";
+        iframe.style.border = "0";
+        iframe.style.overflow = "hidden";
+
+        iframe.onload = () => {
+					try {
+						const doc = iframe.contentDocument || iframe.contentWindow.document;
+            const plotDiv = doc.querySelector(".plotly-graph-div");
+            if (plotDiv) {
+							const height = plotDiv.scrollHeight;
+              iframe.style.height = height + "px";
+            }
+          } catch (err) {
+						console.warn("Cannot access iframe content due to cross-origin restrictions");
+          }
+        };
+
+        container.appendChild(iframe);
+        holder.appendChild(container);
+      }
+    } else {
+			holder.innerHTML = "";
+    }
+  });
+});
+</script>

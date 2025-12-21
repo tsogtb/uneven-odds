@@ -37,6 +37,62 @@ layout: null
 <body>
     <canvas id="c" tabindex="1"></canvas>
 
+    <!-- Instructions overlay -->
+    <div id="instructions-start" class="overlay">
+        Click anywhere to enable controls
+    </div>
+    
+    <div id="instructions-active" class="overlay" style="display: none;">
+        Navigation: <b>WASD</b><br>
+        Orientation: <b>Mouse</b><br>
+        Release Cursor: <b>ESC</b>
+    </div>
+
     <script type="module" src="src/main.js"></script>
+
+    <style>
+        .overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            cursor: pointer;
+            user-select: none;
+        }
+    
+        .overlay:hover {
+            background: rgba(0,0,0,0.7);
+        }
+    </style>
+
+    <script>
+        const canvas = document.getElementById("c");
+        const startInstr = document.getElementById("instructions-start");
+        const activeInstr = document.getElementById("instructions-active");
+
+        const lockPointer = () => canvas.requestPointerLock();
+
+        startInstr.addEventListener("click", lockPointer);
+        canvas.addEventListener("click", lockPointer);
+
+        document.addEventListener("pointerlockchange", () => {
+            if (document.pointerLockElement === canvas) {
+                
+                startInstr.style.display = "none";
+                activeInstr.style.display = "block";
+            } else {
+                
+                startInstr.style.display = "block";
+                activeInstr.style.display = "none";
+            }
+        });
+    </script>
 </body>
+
 </html>
