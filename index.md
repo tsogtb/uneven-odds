@@ -70,7 +70,7 @@ Before diving into the nuances of sentiment and motivation, we start by mapping 
 
 When we compare how often communities mention others versus how often they are mentioned themselves, striking patterns emerge. 
 
-Already, one pattern stands out: ***AskReddit*** receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is ***subredditdrama***, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
+Already, one pattern stands out: ***r/AskReddit*** receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is ***r/subredditdrama***, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
 
 Even before diving deeper, we can already see the contrast between hubs of curiosity and hubs of commentary. These contrasts reveal early hints of Reddit’s internal dynamics, where some communities become magnets for discussion while others act as active commentators on the rest of the ecosystem. 
 
@@ -750,34 +750,15 @@ Looking at which textual features matter most for distinguishing relationship ty
 Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
 
 
-<div class="liwc-card">
-  <div class="liwc-badge">What is LIWC?</div>
-
-  <ul class="liwc-list">
-    <li>LIWC (Linguistic Inquiry and Word Count) analyzes text based on psychological word categories.</li>
-    <li>It captures emotions, thinking styles, and social signals hidden in language.</li>
-    <li>LIWC focuses on <strong>how</strong> something is said, not just <strong>what</strong> is said.</li>
-    <li>In our study, LIWC helps explain sentiment and asymmetry in subreddit interactions.</li>
-  </ul>
-
-  <div class="speech-bubble">
-    “Am I being emotional, analytical, or defensive in how I link to others?”
-  </div>
-</div>
-
-
-What is LIWC?
+**What is LIWC?**
 
 LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framework designed to quantify linguistic and psychological patterns in written language.
 
 - It maps words to predefined linguistic and psychological categories (e.g. affect, anger, social processes, cognitive mechanisms) using validated dictionaries.
 
-
 - Each text is transformed into numerical features representing the relative frequency of these categories, enabling systematic comparison across messages or groups.
 
-
 - Unlike topic-based methods, LIWC captures how language is used rather than what is discussed, focusing on style, emotional tone, and cognitive framing.
-
 
 - In our analysis, LIWC features provide complementary signals to sentiment labels, helping distinguish different types of relationships by their expressive and emotional characteristics.
 
