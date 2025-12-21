@@ -1,10 +1,10 @@
 ---
 layout: page
-title: LIWC
-subtitle: Linguistic Inquiry and Word Count Dictionary
+title: Features
+subtitle: Linguistic Inquiry and Word Count
 toc: true
 full-width: true
-permalink: /liwc/
+permalink: /features/
 ---
 
 {: .toc }
@@ -13,7 +13,14 @@ permalink: /liwc/
 {:toc}
 
 <!--toc-->
-The following list details the <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For selected categories, hyperlinks are provided to instances (*still intact*) that showcase the highest possible scoring for that attribute.    
+The following list details the networks and <a href="https://www.liwc.app/help/howitworks" target="_blank" rel="noopener noreferrer">LIWC</a> attributes utilized within this dataset. For selected LIWC attributes, hyperlinks are provided to surviving Reddit posts that demonstrate the highest scoring instances for each category.
+
+### Network
+- Source subreddit
+- Target subreddit
+- Post-ID
+- Timestamp
+- Link sentiment
 
 ### Sentiment
 - <a href="https://www.reddit.com/r/startrek/comments/1w6awv/you_guys_gotta_see_the_top_comment_in_this/" target="_blank" rel="noopener noreferrer">Positive sentiment calculated by VADER</a> = 0.753

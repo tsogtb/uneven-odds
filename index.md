@@ -17,7 +17,7 @@ animate-cover: true
 <!--toc-->
 
 <details class="iframe-sticky">
-  <summary style="color:#FFF">Miniature Universe</summary>
+  <summary style="color:#FFF">Reddit Universe</summary>
 
   <iframe
     src="{{ site.baseurl }}/regl-graphics/"
