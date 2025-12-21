@@ -29,7 +29,7 @@ const stories = [
       clusters: [
         { 
           num_stars: 67180, 
-          center: { x: 0, y: 0, z: 5 }, 
+          center: { x: 0, y: 0, z: 8 }, 
           radius: 15, 
           shape: 'sphere' 
         }
@@ -43,7 +43,7 @@ const stories = [
       clusters: [
         { 
           num_stars: 858488, 
-          center: { x: 0, y: 0, z: 5 }, 
+          center: { x: 0, y: 0, z: 8 }, 
           radius: 15, 
           shape: 'sphere' 
         }
