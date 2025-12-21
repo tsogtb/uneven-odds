@@ -50,6 +50,7 @@ What if we could map Reddit not as a collection of isolated forums, but as a liv
 By analyzing millions of directed links enriched with sentiment, we can finally explore these hidden dynamics: which groups attract admiration, which spark conflicts, which act as hubs of attention, and which are talked about far more than they ever reply.
 
 Reddit is a vast collection of communities, called subreddits, where millions of users gather around topics ranging from news and science to gaming, culture, or niche interests. The visualization above maps this landscape by grouping subreddits according to their themes and audiences: each point is a community, and those with similar content naturally cluster into regions like gaming, Europe, STEM, or Anime. 
+
 Rather than a chaotic list of forums, Reddit appears as a structured ecosystem with its own cultural zones. In this project, we aim to explore a small but revealing part of this universe, uncovering the hidden dynamics that shape how these communities relate to one another.
 
 This is where the best data analysts of the universe [we]({{ "/about/" | relative_url }}) come in action.
@@ -57,6 +58,7 @@ This is where the best data analysts of the universe [we]({{ "/about/" | relativ
 ### Dataset
 
 If you’re curious about the dataset behind our analysis, here’s what makes it special. We used the Reddit Hyperlink Network dataset, which collects cross-subreddit mentions recorded between 2014 and 2017. Every time a post in one subreddit links to another, it produces a directional connection with a timestamp and a sentiment label indicating whether the interaction was positive or negative. In addition, each link carries linguistic information drawn from the text of the post, giving insight into tone, emotion, and expression… but we’ll come back to these features later on for a deeper explanation. 
+
 Taken together, these elements allow us to view Reddit not as isolated forums, but as a dynamic network of relationships in which communities mention, respond to, or overlook one another. By analyzing this web of interactions, we can explore how groups engage across topics and over time, offering a richer understanding of social behavior on the platform.
 
 
@@ -70,7 +72,7 @@ Before examining the structure of interactions on Reddit, it helps to start with
 
 ### Mapping Asymmetric Relationships
 
-Before diving into the nuances of sentiment and motivation, we first ask a simpler question: how evenly do subreddits interact with one another? The answer is—**very unevenly**. Some communities draw enormous attention—whether admiration, mockery, or criticism—while offering little in return. Others, by contrast, broadcast thousands of links outward but receive scant attention themselves. By examining these imbalances between incoming and outgoing mentions, we can identify which subreddits become frequent targets, which act as loud broadcasters, and how these asymmetries set the stage for the deeper relational patterns explored next.
+Before diving into the nuances of sentiment and motivation, we first ask a simpler question: **how evenly do subreddits interact with one another?** The answer is—**very unevenly**. Some communities draw enormous attention—whether admiration, mockery, or criticism—while offering little in return. Others, by contrast, broadcast thousands of links outward but receive scant attention themselves. By examining these imbalances between incoming and outgoing mentions, we can identify which subreddits become frequent targets, which act as loud broadcasters, and how these asymmetries set the stage for the deeper relational patterns explored next.
 
 
 **A First Look--Who talks much more than they listen—and what does that reveal?**
