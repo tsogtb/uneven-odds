@@ -120,7 +120,7 @@ Together, they offer an early glimpse into Reddit’s internal dynamics, where s
 
 
 <div style="background-color:#f6f8fa; padding:12px 16px; border-radius:6px; margin:1em 0;">
-<strong>🔍 Structure tells us where attention flows—but what about how it feels?<br>
+<strong>🔍 Structure tells us where attention flows—but what about how it feels?</strong><br>
 To answer that, we turn from interaction asymmetry to sentiment asymmetry.<br>
 Understanding this shift hinges on a single metric: the asymmetry score. Here’s how it is computed.
 </div>
