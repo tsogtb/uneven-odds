@@ -1174,7 +1174,7 @@ pre {
 }
 
 .toc-title-small {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1206,6 +1206,7 @@ pre {
 .toc a {
   color: #666;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 .toc a:hover {
