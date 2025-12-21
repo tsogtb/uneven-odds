@@ -735,7 +735,7 @@ Looking at the overall distribution, a clear pattern emerges: most asymmetric re
 
 ### Do One-Sided Attacks “sound” different?
 
-**How do interactions looks like ?**
+**How do interactions look like ?**
 
 After identifying asymmetric relationships, we now focus on one-sided attacks and ask whether they carry a distinctive linguistic signature. Rather than looking at sentiment alone, we examine how language itself changes when hostility flows mostly in one direction. The idea is simple: if one-sided attacks are a specific interaction pattern, they should also sound different in the way they are written.
 
@@ -799,7 +799,7 @@ Several patterns emerge from this comparison. One-sided negative interactions te
 
 <details class="plotly-details-png" open>
   <summary>Top 10 Country Subreddits by Negative Outgoing vs. Incoming Ratio</summary>
-  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="100%">
+  <img src="{{ site.baseurl }}/assets/plots/negative_country_out_vs_in_ratio.png" alt="negative_country_out_vs_in_ratio" width="80%">
 </details>
 
 
