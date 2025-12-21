@@ -58,6 +58,8 @@ function loadStory(index) {
     starData.colorBuffer.destroy();
   }
 
+  camera.reset();
+
   starData = stories[index].generate();
   render = createRenderer(regl, starData);
   document.getElementById("viz-info").innerHTML = stories[index].description; // update overlay

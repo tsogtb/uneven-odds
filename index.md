@@ -16,7 +16,6 @@ animate-cover: true
 
 <!--toc-->
 
-
 <details class="iframe-sticky">
   <summary style="color:#FFF">Miniature Universe</summary>
 
@@ -27,187 +26,140 @@ animate-cover: true
   </iframe>
 </details>
 
----
 
-## 1. Hook: The Opening Scene
-**Goal**: Grab attention with a compelling, concrete example
+If Reddit communities were people at a party, some would spend the whole evening debating loudly, others would quietly observe from the corner, and a few would spend their time gossiping about groups who barely even know they exist.
+Online platforms are usually described through trends, viral posts, or influential users but we rarely step back and look at how entire communities talk about one another, how they form alliances, rivalries, or silent tensions across the platform.
+Yet, behind Reddit’s chaotic surface lies a vast web of interactions: every time a subreddit links to another, it expresses something, approval, criticism, curiosity, or sometimes hostility. These signals accumulate into patterns far richer than what can be seen from individual posts.
 
-**Content**:
-- Opening line: "r/blackout2015 links to r/shittheadminssay with 100% negative sentiment across all 3 interactions. But when we look the other way, r/shittheadminssay links back with 100% positive sentiment across all 4 interactions. This is a one-sided war with an asymmetry score of 2.000—the most extreme case in our entire dataset."
-- Visual: Interactive network diagram highlighting this extreme asymmetric pair
-- Key Metrics: Maximum asymmetry score = 2.000, 619,334 unique subreddit pairs analyzed, 59,952 bidirectional pairs
+What if we could uncover not just who speaks, but who speaks about whom, and in what tone?
+What if we could map Reddit not as a collection of isolated forums, but as a living ecosystem of communities reacting to each other in real time? Could Reddit’s community dynamics resemble those of our real-world society?
 
-<!--
-<iframe
-	src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}"
-	loading="lazy"
-	width="100%"
-	height="600"
-	frameborder="0">
-</iframe>
--->
+By analyzing millions of directed links enriched with sentiment, we can finally explore these hidden dynamics: which groups attract admiration, which spark conflicts, which act as hubs of attention, and which are talked about far more than they ever reply.
 
+Reddit is a vast collection of communities, called subreddits, where millions of users gather around topics ranging from news and science to gaming, culture, or niche interests. The visualization above maps this landscape by grouping subreddits according to their themes and audiences: each point is a community, and those with similar content naturally cluster into regions like gaming, Europe, STEM, or Anime. 
+Rather than a chaotic list of forums, Reddit appears as a structured ecosystem with its own cultural zones. In this project, we aim to explore a small but revealing part of this universe, uncovering the hidden dynamics that shape how these communities relate to one another.
 
+This is where the best data analysts of the universe [we]({{ "/about/" | relative_url }}) come in action.
 
+### Dataset
 
-<details class="plotly-details" data-src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}">
-	<summary>Distribution of Relationship Types</summary>
-	<div class="plotly-holder"></div>
-</details>
+If you’re curious about the dataset behind our analysis, here’s what makes it special. We used the Reddit Hyperlink Network dataset, which collects cross-subreddit mentions recorded between 2014 and 2017. Every time a post in one subreddit links to another, it produces a directional connection with a timestamp and a sentiment label indicating whether the interaction was positive or negative. In addition, each link carries linguistic information drawn from the text of the post, giving insight into tone, emotion, and expression… but we’ll come back to these features later on for a deeper explanation. 
+Taken together, these elements allow us to view Reddit not as isolated forums, but as a dynamic network of relationships in which communities mention, respond to, or overlook one another. By analyzing this web of interactions, we can explore how groups engage across topics and over time, offering a richer understanding of social behavior on the platform.
+
+Here are the key numbers that shape our dataset.
+
+**[enter numbers]**
+
+Before diving deeper into the structure of Reddit’s interactions, let’s start with a simple overview of general sentiment across all hyperlinks: only about 10% of cross-subreddit mentions carry a negative tone, while the vast majority remain positive or neutral. This broad snapshot might suggest that the overall atmosphere on Reddit is mostly calm and positive, but as our analysis will show, things are far more complex beneath the surface.
 
 <details class="plotly-details" data-src="{{ '/assets/plots/sentiment_distribution_plot_web.html' | relative_url }}">
 	<summary>Sentiment Distribution</summary>
 	<div class="plotly-holder"></div>
 </details>
 
+### Mapping Asymmetric Relationships
+
+Before diving into the nuances of sentiment and motivation, we start by mapping how unevenly subreddits interact with one another. Some communities attract enormous attention, whether admiration, mockery, or criticism, while barely replying at all, whereas others send out thousands of links without receiving much back. By examining these imbalances in incoming vs. outgoing mentions, we can uncover which subreddits become frequent targets, which ones act as loud broadcasters, and how these asymmetries lay the groundwork for the deeper relational patterns we analyze next.
+
+A first look: who talks much more than they listen?
+
 <details class="plotly-details" data-src="{{ '/assets/plots/subreddit_most_asymmetric_in_outgoing_links.html' | relative_url }}">
 	<summary>Subreddits with Most Asymmetric Incoming vs Outgoing Links</summary>
 	<div class="plotly-holder"></div>
 </details>
 
+When we compare how often communities mention others versus how often they are mentioned themselves, striking patterns emerge. 
 
----
+Already, one pattern stands out: AskReddit receives an enormous amount of incoming links, which makes sense for a community built around asking questions that many other subreddits reference. But on the opposite side, the subreddit that sends out the most links is subredditdrama, a community literally dedicated to pointing at conflicts elsewhere on Reddit. 
 
-## 2. Setting the Stage: Understanding the Reddit Hyperlink Network
-**Goal**: Help readers understand what we're analyzing
+Even before diving deeper, we can already see the contrast between hubs of curiosity and hubs of commentary. These contrasts reveal early hints of Reddit’s internal dynamics, where some communities become magnets for discussion while others act as active commentators on the rest of the ecosystem. 
 
-**Content**:
-- What is a hyperlink network?: Subreddits mention/link to each other in posts
-- The Data: 858,488 hyperlinks, 67,180 subreddits, 2014-2017, 65 LIWC features
-- Visual: Timeline showing network growth (31 → 7,112 subreddits), sentiment distribution (90% positive)
+But before going any further, it’s important to explain how this asymmetry score is computed, since it’s the backbone of all the results that follow.
 
----
+### Pairwise Sentiment and Asymmetry Computation
 
-## 3. The Discovery: What Are Polarity Asymmetries?
-**Goal**: Define the core concept clearly
+We model interactions between subreddits as directed edges with associated sentiment.  
+Each Reddit post linking from a source subreddit to a target subreddit is treated as one observation with sentiment in {−1, +1}.
 
-**Content**:
-- Definition: Asymmetric relationships where sentiment A→B ≠ B→A
-- Types: Various asymmetry types including one-sided negative (A→B negative, B→A positive/neutral), one-sided positive, mutual positive, mutual negative, and unidirectional relationships
-- Key Finding: Out of 619,334 unique pairs, only 59,952 have links in both directions—most relationships are unidirectional
-- Visual: Side-by-side comparison diagrams, scatter plot (sentiment A→B vs. B→A), asymmetry type distribution chart
+For every unordered pair of subreddits {A, B}, we compute sentiment statistics in both directions:
 
----
+- A → B: mean sentiment of all links from A to B  
+- B → A: mean sentiment of all links from B to A  
 
-## 4. Research Question 1: Finding the Most Asymmetric Pairs
-**Goal**: Answer "Which pairs show strongest asymmetries?"
+Let the sentiment of the i-th link from A to B be denoted by  
 
-**Content**:
-- Method: Analyzed 619,334 unique subreddit pairs, calculated asymmetry scores based on sentiment differences
-- Results: Top 20 most asymmetric pairs identified, with blackout2015 ↔ shittheadminssay having the maximum asymmetry score of 2.000
-- Key Insight: Most extreme asymmetries occur when one subreddit is completely negative (sentiment = -1.0) while the other is completely positive (sentiment = +1.0)
-- Visual: Bar chart of top pairs, scatter plot with asymmetry scores, network subgraph highlighting extreme pairs
+$$
+X_{A \to B}^{(i)} \in \{-1, +1\}.
+$$
 
-**ML Enhancement**:
-- Random Forest regression achieves R² = 0.9996, Linear Regression achieves R² = 0.6402
-- Network centrality and activity patterns are strong predictors of asymmetry scores
-- Feature importance plot shows which network features matter most
-- Predicted vs. actual scores visualization demonstrates model accuracy
+The directional mean sentiment is:
 
----
+$$
+\bar{X}_{A \to B} = \frac{1}{n_{A \to B}} \sum_{i=1}^{n_{A \to B}} X_{A \to B}^{(i)}.
+$$
 
-## 5. Research Question 2: The Language of Conflict
-**Goal**: Answer "Are one-sided hostilities different in nature from mutual hostilities?"
+We also record the number of links in each direction, 
 
-**Content**:
-- Method: Used pair-level features (asymmetry scores, sentiment differences, link patterns) to classify one-sided hostilities vs. other relationship types
-- Results: Pair-level features can effectively distinguish one-sided hostilities from other asymmetry types
-- Key Features: Asymmetry score, sentiment differences, link ratios, and link imbalance are most important
-- Visual: Feature importance plot, confusion matrix, classification performance metrics
+$$
+n_{A \to B} \quad \text{and} \quad n_{B \to A}.
+$$
 
-**ML Enhancement**:
-- Classification model (Random Forest and Logistic Regression) using pair-level features
-- Feature importance shows asymmetry score and sentiment differences are strongest predictors
-- High precision and recall for identifying one-sided hostilities
-- Simplified approach using already-computed pair statistics (much faster than aggregating LIWC features)
+Each unordered pair {A, B} appears once in the dataset, with both directions represented when available.
 
----
+Sentiment asymmetry measures whether one subreddit consistently expresses more positive or negative sentiment toward another than it receives in return.
 
-## 6. Research Question 3: Network Roles and Impact
-**Goal**: Answer "What impact do polarity asymmetries have on the broader network?"
+The raw asymmetry is defined as:
 
-**Content**:
-- Subreddit Roles: 165 attackers, 146 receivers, 7,332 peaceful, 44 mutual hostile, 1,954 mixed, 967 balanced, 56,572 inactive
-- Key Finding: Most subreddits (84%) are inactive or peaceful—only a small fraction engage in hostile behavior
-- Network Centrality: Activity rates (outgoing/incoming negative rates) are key predictors of roles
-- Visual: Network diagram colored by role, centrality vs. role scatter plot, role distribution pie chart
+$$
+\Delta = \bar{X}_{A \to B} - \bar{X}_{B \to A}.
+$$
 
-**ML Enhancement**:
-- Classification model predicting subreddit roles with varying performance across classes
-- Highest precision for peaceful subreddits (96.2%) and attackers (74.4%)
-- Feature importance: Outgoing negative rate (44.6%) and incoming negative rate are strongest predictors
-- Network centrality features (PageRank, in-degree, out-degree) can be added for enhanced prediction
+Because raw differences can be unstable for small sample sizes, we normalize this difference by its standard error.
 
----
+Since sentiment is binary, the directional mean corresponds to a probability of positive sentiment:
 
-## 7. The Bigger Picture: What This Tells Us
-**Goal**: Synthesize findings
+$$
+p = \frac{\bar{X} + 1}{2}.
+$$
 
-**Content**:
-- Key Findings: 
-  - Extreme asymmetries are rare but highly visible (maximum score of 2.000)
-  - Most relationships are unidirectional (only 9.7% of pairs have bidirectional links)
-  - Pair-level features (sentiment differences, link patterns) effectively distinguish one-sided hostilities
-  - Network roles are predictable: 84% of subreddits are inactive/peaceful, only 0.3% are attackers/receivers
-  - ML models achieve excellent performance (R² = 0.9996 for asymmetry prediction)
-- Implications: 
-  - Asymmetric power dynamics exist but are uncommon
-  - Most Reddit communities maintain neutral or positive relationships
-  - Network structure and activity patterns are strong predictors of behavior
-  - One-sided hostilities can be identified using simple pair-level statistics
-- Future Research: Why do extreme asymmetries form? Do they escalate over time? What prevents subreddits from responding to negative links?
+For a binary variable in {−1, +1}, the variance of the sample mean is:
 
----
+$$
+\mathrm{Var}(\bar{X}) = \frac{4 p (1 - p)}{n}.
+$$
 
-## 8. Methodology & Technical Details
-**Goal**: Provide transparency
+The standard error of the difference between directions is therefore:
 
-**Content**:
-- Data: Reddit Hyperlink Network (2014-2017)
-- Methods: Asymmetry scores, statistical tests, network analysis, ML models
-- Code: Link to GitHub
-- Limitations: Very few mutual hostilities, class imbalance
+$$
+\mathrm{SE}(\Delta) =
+\sqrt{
+\frac{4 p_{A \to B}(1 - p_{A \to B})}{n_{A \to B}} +
+\frac{4 p_{B \to A}(1 - p_{B \to A})}{n_{B \to A}}
+}.
+$$
 
----
+The final asymmetry score is defined as:
 
-## Visual Design Guidelines
+$$
+\mathrm{Asymmetry}(A,B) =
+\frac{\bar{X}_{A \to B} - \bar{X}_{B \to A}}{\mathrm{SE}(\Delta)}.
+$$
 
-### Color Scheme
-- One-sided hostilities: Red/Orange
-- Peaceful/Positive: Green/Blue
-- Network nodes: Size = centrality, Color = role
+This score is positive when A is more positive toward B than B is toward A, negative in the opposite case, and increases in magnitude as asymmetry becomes stronger and better supported by data. Pairs with insufficient observations in either direction are excluded to avoid unstable estimates.
 
-### Interactive Elements
-- Hover tooltips on network nodes
-- Filterable tables
-- Interactive scatter plots
-- Timeline slider (if temporal analysis)
+Who are the most asymmetric pairs? 
 
----
+With this score in hand, we can now identify which subreddit pairs stand out as the most asymmetric. Some communities consistently direct strong sentiment toward specific targets, allowing us to form a first picture of where the sharpest imbalances on Reddit actually lie.
 
-## Key Metrics to Highlight
-- 858,488 hyperlinks analyzed
-- 67,180 subreddits in the network
-- 619,334 unique subreddit pairs
-- 59,952 bidirectional pairs (pairs with links in both directions)
-- 2.000 maximum asymmetry score (blackout2015 ↔ shittheadminssay)
-- 165 attacker subreddits (primarily send negative links)
-- 146 receiver subreddits (primarily receive negative links)
-- 7,332 peaceful subreddits (low negative rates in both directions)
-- 44 mutual hostile subreddits (high negative rates in both directions)
-- ML Model Performance: R² = 0.9996 for asymmetry prediction (Random Forest)
 
----
+**[the plot]**
 
-## Story Flow
-1. Hook → Extreme example
-2. Context → Data understanding
-3. Definition → Core concept
-4. RQ1 → Discovery
-5. RQ2 → Deep dive
-6. RQ3 → Big picture
-7. Synthesis → Meaning
-8. Methods → Transparency
+To understand what these asymmetric relationships actually look like, we break them down using a few key features. Sentiment_A_to_B and sentiment_B_to_A tell us whether references between two communities lean positive or negative. We tend to compare the two values.  Count_A_to_B and count_B_to_A show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
+Looking through the strongest pairs, several examples stand out. India → subredditdrama appears almost one-sidedly positive: India sends consistently positive references, yet subredditdrama responds with a much larger volume of mentions whose average sentiment sits around 0.4. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit. (voir si subredditdrama attaque aussi d’autres subreddits ou seulement India)
+Another telling case is the_donald → worldnews. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
+A third example, feminism → mensrights, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
+Together, these pairs illustrate why asymmetry matters: it is not just about who talks more, but about the cultural, political, and social frictions that shape how communities choose their targets, and how loudly they decide to speak.
+
 
 <div style="max-height: 400px; overflow: auto; border: 2px solid #eee; padding: 8px;">
 <table border="1" class="dataframe">
@@ -727,6 +679,53 @@ animate-cover: true
   </tbody>
 </table>
 </div>
+
+A final piece of the puzzle comes from looking at whether the structural position of a subreddit, how much it is talked about compared to how much it talks about others, relates to asymmetry. While only a couple of communities combine extremely high incoming attention with repeated appearances in asymmetric pairs, a broader pattern still emerges. 
+Subreddits that receive a lot of incoming links, the “big fish” of Reddit, are often pulled into asymmetric relationships almost despite themselves, simply because many others talk about them without expecting a response. 
+At the same time, being structurally balanced does not guarantee symmetry: some communities sit near the center in terms of incoming and outgoing activity, yet still appear in several asymmetric relationships. The case of India is a good example. Its overall activity looks balanced, but it is repeatedly involved in one-sided interactions. This suggests that asymmetry is not only about volume, but also about who is being talked about, and why.
+
+**[the plot]**
+
+
+### Types of relationships
+
+So far, we have seen that asymmetry on Reddit does not arise randomly: it is shaped by who talks, who gets talked about, and how attention is distributed across communities. But asymmetry alone does not tell the whole story. Two asymmetric relationships can look very different depending on tone, direction, and response. To better understand what these imbalances actually mean, we now turn to the nature of the relationships themselves.
+Looking at the overall distribution, a clear pattern emerges: most asymmetric relationships are one-sided and positive, where one community frequently references another in a favorable or neutral way without much reaction in return. Mutual positivity is also relatively common, while mutual negativity is extremely rare. This tells us that most of Reddit is not in constant war, but when we do see extreme polarity differences, they are more often due to one side throwing rocks than two sides shouting at each other .When strong negativity appears, it is far more often unilateral than reciprocal, suggesting that Reddit is less dominated by ongoing feuds than by isolated communities directing criticism toward others, often without triggering a direct confrontation.
+
+
+<details class="plotly-details" data-src="{{ '/assets/plots/relationship_type_distribution.html' | relative_url }}">
+	<summary>Distribution of Relationship Types</summary>
+	<div class="plotly-holder"></div>
+</details>
+
+
+
+### Do One-Sided Attacks “sound” different?
+
+How do interactions looks like ?
+
+After identifying asymmetric relationships, we now focus on one-sided attacks and ask whether they carry a distinctive linguistic signature. Rather than looking at sentiment alone, we examine how language itself changes when hostility flows mostly in one direction. The idea is simple: if one-sided attacks are a specific interaction pattern, they should also sound different in the way they are written.
+Looking at which textual features matter most for distinguishing relationship types already provides useful insight. Some patterns consistently appear in one-sided attacks, suggesting that these interactions follow recognizable linguistic dynamics rather than occurring at random. This highlights that asymmetry is not only a structural phenomenon, but is also reflected in the way interactions are expressed—an aspect we will examine more closely in the next section.
+
+**[the plot]**
+
+Here, we can already highlight a few key results. The features with the strongest impact on relationship types are not only sentiment-related, but also structural and stylistic. Measures such as the fraction of uppercase letters, special characters, text length, and readability consistently rank among the most influential, suggesting that polarized or one-sided interactions tend to come with more emphatic and marked writing styles. At the same time, sentiment indicators (both global and negative scores) remain important, confirming that tone still plays a central role in distinguishing different kinds of relationships. Overall, this shows that relationship asymmetry is reflected not just in what sentiment is expressed, but also in how messages are written, a signal that linguistic form and emotional content go hand in hand.
+
+What is LIWC?
+Small part on the website explaining how it works, 3-4 bullet points so anyone can understand the idea behind it, and their importance in our analysis. speech bubble where our reddit character is questioning himself?
+
+LIWC (Linguistic Inquiry and Word Count) is a lexicon-based text analysis framework designed to quantify linguistic and psychological patterns in written language.
+
+- It maps words to predefined linguistic and psychological categories (e.g. affect, anger, social processes, cognitive mechanisms) using validated dictionaries.
+
+
+- Each text is transformed into numerical features representing the relative frequency of these categories, enabling systematic comparison across messages or groups.
+
+
+- Unlike topic-based methods, LIWC captures how language is used rather than what is discussed, focusing on style, emotional tone, and cognitive framing.
+
+
+- In our analysis, LIWC features provide complementary signals to sentiment labels, helping distinguish different types of relationships by their expressive and emotional characteristics.
 
 
 

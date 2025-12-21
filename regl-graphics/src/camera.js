@@ -23,9 +23,22 @@ export class Camera {
     this.speed = 10.0
     this.mouseSensitivity = 0.002
 
+    this._initialPosition = vec3.clone(this.position)
+    this._initialYaw = this.yaw
+    this._initialPitch = this.pitch
+
     this._initMouse()
     this.updateProjection()
     window.addEventListener("resize", () => this.updateProjection())
+  }
+
+  reset() {
+    vec3.copy(this.position, this._initialPosition)
+  
+    this.yaw = this._initialYaw
+    this.pitch = this._initialPitch
+  
+    this.updateView()
   }
 
   _initMouse() {
