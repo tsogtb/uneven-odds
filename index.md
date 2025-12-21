@@ -88,14 +88,6 @@ Each Reddit post linking from a source subreddit to a target subreddit is treate
 
 For every unordered pair of subreddits {A, B}, we compute sentiment statistics in both directions:
 
-<!-- - A → B: mean sentiment of all links from A to B  
-- B → A: mean sentiment of all links from B to A   -->
-
-<!-- | Direction | Definition |
-|----------|------------|
-| A → B | sentiment of all links from A to B |
-| B → A | sentiment of all links from B to A | -->
-
 <table>
   <tr>
     <th align="center">Direction</th>
@@ -192,13 +184,12 @@ With this score in hand, we can now identify which subreddit pairs stand out as 
 
 
 To understand what these asymmetric relationships actually look like, we break them down using a few key features. **`sentiment_A_to_B`** and **`sentiment_B_to_A`** tell us whether references between two communities lean positive or negative. We tend to compare the two values.  And **`count_A_to_B`** and **`count_B_to_A`** show how frequently the two sides talk about each other, crucial for distinguishing a meaningful pattern from a coincidence. And the final asymmetry score summarizes how much louder one side is compared to the other.
-Looking through the strongest pairs, several examples stand out. **`India → subredditdrama`** appears almost one-sidedly positive: India sends consistently positive references, yet subredditdrama responds with a much larger volume of mentions whose average sentiment sits around **0.4**. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit.
+Looking through the strongest pairs, several examples stand out. <span style="color: #4C72B0; font-weight: 600;">r/India → r/subredditdrama</span> appears almost one-sidedly positive: India sends consistently positive references, yet <span style="color: #4C72B0; font-weight: 600;">r/subredditdrama</span> responds with a much larger volume of mentions whose average sentiment sits around **0.4**. It raises the possibility that India becomes a recurring subject of jokes, criticism, or social commentary, a dynamic that fits with how large national communities often become meme targets on Reddit.
 
 
-Another telling case is the_donald → worldnews. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
-A third example, feminism → mensrights, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
+Another telling case is <span style="color: #4C72B0; font-weight: 600;">r/the_donald → r/worldnews</span>. This dataset spans the 2016 U.S. presidential election, a period when political tensions spilled across the entire platform. Seeing The_Donald talk disproportionately about worldnews is unsurprising: users in a partisan political space often scrutinize mainstream news outlets (in particular when related to Donald Trump), sometimes with hostility, which creates a clear imbalance in attention.
+A third example, <span style="color: #4C72B0; font-weight: 600;">r/feminism → r/mensrights</span>, reflects a worldwide general subject. Feminism shows a relatively positive or neutral tone toward mensrights, while the reverse direction often carries harsher sentiment. This asymmetry mirrors real-world conflicts between the two movements, in which each side reacts to the other through criticism, stereotypes, or counter-arguments, yet sometimes with differing levels of intensity.
 Together, these pairs illustrate why asymmetry matters: it is not just about who talks more, but about the cultural, political, and social frictions that shape how communities choose their targets, and how loudly they decide to speak.
-
 
 
 <div style="max-height: 400px; overflow: auto; border: 2px solid #eee; padding: 8px;">
@@ -744,9 +735,10 @@ Looking at the overall distribution, a clear pattern emerges: most asymmetric re
 
 ### Do One-Sided Attacks “sound” different?
 
-How do interactions looks like ?
+**How do interactions looks like ?**
 
 After identifying asymmetric relationships, we now focus on one-sided attacks and ask whether they carry a distinctive linguistic signature. Rather than looking at sentiment alone, we examine how language itself changes when hostility flows mostly in one direction. The idea is simple: if one-sided attacks are a specific interaction pattern, they should also sound different in the way they are written.
+
 Looking at which textual features matter most for distinguishing relationship types already provides useful insight. Some patterns consistently appear in one-sided attacks, suggesting that these interactions follow recognizable linguistic dynamics rather than occurring at random. This highlights that asymmetry is not only a structural phenomenon, but is also reflected in the way interactions are expressed—an aspect we will examine more closely in the next section.
 
 <details class="plotly-details-png" open>
