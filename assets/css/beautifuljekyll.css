@@ -1426,3 +1426,7 @@ pre {
 .plotly-details-png[open] summary::before {
   transform: rotate(90deg);
 }
+
+.plotly-details-png summary:hover::before {
+  color: #000;
+}
